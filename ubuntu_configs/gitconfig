@@ -1,0 +1,9 @@
+## cp ./gitconfig ~/.gitconfig
+
+[user]
+	name = lixuancong 
+	email = lixuancong@molmc.com
+[core]
+	editor = vim  
+[merge]
+	tool = meld 

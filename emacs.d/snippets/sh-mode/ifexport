@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: if [[]] export ... 
+# key: ifexport 
+# --
+
+if [[ -z "$$1" ]]; then export $1=$2
+fi
+
+

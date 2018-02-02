@@ -1,0 +1,57 @@
+* dotfiles
+
+This is an awesome config files.
+
+include:
+
+#+BEGIN_SRC text
+  .zshrc
+  terminator
+  gitconfig
+  Vagrantfile
+  polipo
+#+END_SRC
+
+** link config files 
+
+link terminator config, .emacs.d, .zshrc. 
+#+BEGIN_SRC shell
+./link_configs.sh
+#+END_SRC
+
+
+** emacs
+
+编写emacs相关内容的时候，常用的快捷键：
+
+   | 快捷键   | 说明                 |
+   |----------+----------------------|
+   | Ctrl+h   | 查看帮助             |
+   | Ctrl+h f | 查看函数             |
+   | Ctrl+h v | 查看变量             |
+   | Ctrl+h k | 查看快捷键绑定的函数 |
+   |          |                      |
+
+   | package                     | 说明                                             | link                                    |
+   |-----------------------------+--------------------------------------------------+-----------------------------------------|
+   | diminish                    |                                                  |                                         |
+   | which-key                   | 提示可得的快捷键。                               |                                         |
+   | comment-dwim-2              | 设置全局键做注释，可以段注释，行前注释，行尾注释 |                                         |
+   | avy                         | 选择跳转到某个字符。                             |                                         |
+   | multiple-cursors            |                                                  |                                         |
+   | hl-line                     | 强调当前行。                                     |                                         |
+   | helm                        | 查找各种文件内容,buffer切换,emacs命令执行等等。  |                                         |
+   | hideshow                    | 隐藏显示。                                       |                                         |
+   | highlight-symbol            | 符号显示。                                       |                                         |
+   | flycheck                    | 语法检测。                                       |                                         |
+   | yasnippet                   | 模板工具                                         |                                         |
+   | hippie-exp-ext              | 编码补全                                         |                                         |
+   | magit                       | git操作                                          |                                         |
+   | git-gutter                  | git 项目显示                                     |                                         |
+   | ag, helm-ag                 | 查找工具                                         |                                         |
+   | projectile, helm-projectile | 项目相关                                         |                                         |
+   | company                     | 补全工具                                         | http://company-mode.github.io/          |
+   | dired+                      | 文件目录操作                                     |                                         |
+   | dired-k                     | 像 [[https://github.com/supercrabtree/k][zsh的k一样显示目录]]                            | https://github.com/syohex/emacs-dired-k |
+
+helm: 模糊查找文件。

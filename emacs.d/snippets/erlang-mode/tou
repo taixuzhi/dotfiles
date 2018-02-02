@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: header of a erlang file 
+# key: tou 
+# --
+%%%--------------------------------------------------------------------
+%%% @Copyright(c) 2016-2017 MOLMC Enterprise, Inc. (https://intoyun.com)
+%%% @author Xuancong Lee <congleetea@gmail.com>
+%%%--------------------------------------------------------------------
+
+-module($1).

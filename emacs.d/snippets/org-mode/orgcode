@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: orgcode
+# contributor: rho
+# key: orgcode
+# --
+#+BEGIN_SRC $1
+$2
+#+END_SRC

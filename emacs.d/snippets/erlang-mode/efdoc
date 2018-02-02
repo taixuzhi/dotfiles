@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: doc of function
+# key: efdoc
+# --
+%% @doc $1

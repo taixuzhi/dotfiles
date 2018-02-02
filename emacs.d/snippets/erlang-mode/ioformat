@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: io:format
+# key: ioformat 
+# --
+io:format("~n~p:~p:$1=~p~n", [?MODULE, ?LINE, $1]),

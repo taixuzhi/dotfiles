@@ -1,0 +1,12 @@
+ubuntu_pkgs
+.cask
+abbrev_defs
+auto-save-list
+docsets
+elpa
+projectile-bookmarks.eld
+undo-tree-history
+projectile.cache
+url
+recentf
+emacs.d/eshell
