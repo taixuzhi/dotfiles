@@ -45,6 +45,10 @@
   (progn
     (add-hook 'dired-initial-position-hook 'dired-k)))
 
+(use-package neotree
+  :ensure t
+  :bind ("C-c t" . neotree-toggle))
+
 (use-package rainbow-mode
   :ensure t
   :defer t
