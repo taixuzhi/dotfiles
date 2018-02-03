@@ -11,6 +11,7 @@
   :defer 10
   :config
   (exec-path-from-shell-initialize)
+  (setq exec-path-from-shell-check-startup-files nil)
   (setq exec-path-from-shell-arguments '("-l"))
   (exec-path-from-shell-copy-env "GOPATH"))
 
