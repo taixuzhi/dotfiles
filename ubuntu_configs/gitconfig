@@ -1,8 +1,8 @@
 ## cp ./gitconfig ~/.gitconfig
 
 [user]
-	name = lixuancong 
-	email = lixuancong@molmc.com
+	name = congleetea 
+	email = congleetea@gmail.com
 [core]
 	editor = vim  
 [merge]
