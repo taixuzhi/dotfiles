@@ -15,6 +15,7 @@ ERLANG_VER=19.3
 sws=(
     # # shell
     # zsh \
+    # albert \
     # shadowsocks \
     # # basic
     # trash-cli \
@@ -142,6 +143,17 @@ function install(){
             sudo apt-add-repository ppa:ansible/ansible
             sudo apt-get update
             sudo apt-get install -y ansible
+        elif [ $sw == "albert" ]; then
+            # https://github.com/albertlauncher/albert/issues/123
+            interactive_install()
+            sudo add-apt-repository ppa:nilarimogard/webupd8
+            sudo apt-get update
+            sudo apt-get install albert
+            ExnDir="~/.local/share/albert/external"
+            if [ ! -d $ExnDir ];then
+                mkdir -p $ExnDir 
+            fi
+            cp $CONFIGDIR/org.albert.extension.external.switchapp.py $ExnDir 
         else
             sudo apt-get install -y $sw
         fi
