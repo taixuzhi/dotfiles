@@ -1,20 +1,16 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+##########################################################################################
+#ln -s /home/congleetea/dotfiles/zshrc /home/congleetea/.zshrc   # 使用绝对路径进行软链接#
+##########################################################################################
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+# ZSH_THEME="agnoster"
 ZSH_THEME="robbyrussell"
-
-# Set list of themes to load
-# Setting this variable when ZSH_THEME=random
-# cause zsh load theme from this variable instead of
-# looking in ~/.oh-my-zsh/themes/
-# An empty array have no effect
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -58,15 +54,14 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git
-)
-
-source $ZSH/oh-my-zsh.sh
-
+plugins=(git git-flow-avh autojump)
+[[ -s /home/congleetea/.autojump/etc/profile.d/autojump.sh ]] && source /home/congleetea/.autojump/etc/profile.d/autojump.sh
 # User configuration
 
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
+
+source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -82,7 +77,7 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
+# export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -92,3 +87,72 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#########################################################
+
+#########################################################
+alias c="clear"
+# alias e="LC_CTYPE=zh_CN.UTF-8 emacs &"
+alias e="emacs -nw"
+alias gst="git status"
+alias gad="git add"
+alias gbr="git branch -vv"
+alias gcl="git clone"
+alias gps="git push"
+alias gpl="git pull"
+alias gcm="git commit -m"
+alias gdf="git diff"
+alias glg="git log --graph"
+alias grh="git reset --hard"
+alias gsh="git show "
+alias gmg="git merge --no-ff"
+alias aptinstall="sudo apt-get install "
+alias ninstall="sudo npm install -g"
+alias pinstall="sudo pip install"
+alias rm="trash"
+alias pdf="zathura"
+alias ot="nautilus"
+
+######### git flow #################################
+alias gfinit="git flow init"
+alias gffstart="git flow feature start" 
+alias gfffinish="git flow feature finish" 
+alias gffpub="git flow feature publish"
+
+# alias erl='/usr/bin/rlwrap -a erl'
+
+alias szsh="source ~/.zshrc"
+alias dl="cd ~/Downloads"
+alias dc="cd ~/Documents"
+alias dt="cd ~/Desktop"
+alias boke="cd ~/Documents/gowo/walk/congleetea.github.io"
+alias dkrmi="docker rmi $(docker images -q --filter "dangling=true")"
+alias say="espeak"
+#mkdir and cd
+function mkcd() { mkdir -p "$@" && cd "$_"; }
+function seddir() { sed -i "s/$1/$2/g" `grep $1 -rl ./` }
+
+export GTAGSCONF=/usr/local/share/gtags/gtags.conf
+export GTAGSLABEL=ctags gtags
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export NVM_DIR="/home/congleetea/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+[[ -s /home/congleetea/.autojump/etc/profile.d/autojump.sh ]] && source /home/congleetea/.autojump/etc/profile.d/autojump.sh
+
+setxkbmap -option ctrl:swapcaps
+
+## use polipo for proxy, default port is 8123.
+alias proxy='export http_proxy=http://127.0.0.1:8123;export HTTPS_PROXY=$http_proxy;export HTTP_PROXY=$http_proxy;export FTP_PROXY=$http_proxy;export https_proxy=$http_proxy;export ftp_proxy=$http_proxy;'
+alias noproxy='unset http_proxy;unset HTTPS_PROXY;unset HTTP_PROXY;unset FTP_PROXY;unset https_proxy;unset ftp_proxy'
+
+export JAVA_HOME=/usr/local/jdk1.8.0
+export JRE_HOME=${JAVA_HOME}/jre
+export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
+export PATH=${JAVA_HOME}/bin:$PATH
+export GTAGSCONF=/usr/local/share/gtags/gtags.conf
+export GTAGSLABEL=ctags gtags
+export GOROOT=/usr/local/go
+export GOPATH=/home/congleetea/gitlab/go
+export PATH=$PATH:/usr/local/go/bin:/home/congleetea/gitlab/go/bin
