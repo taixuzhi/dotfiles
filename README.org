@@ -12,6 +12,11 @@ include:
   polipo
 #+END_SRC
 
+** install ubuntu 
+   Firstly, uncomment the softwares you want to install in $sws. then run ubuntu-install.sh.
+
+   some installations needs enter interactively.
+
 ** link config files 
 
 link terminator config, .emacs.d, .zshrc. 

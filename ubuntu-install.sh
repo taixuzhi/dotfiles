@@ -9,38 +9,38 @@
 PWD=$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )
 SWDIR=${PWD}/ubuntu_pkgs
 CONFIGDIR=${PWD}/ubuntu_configs
+
 EMACS_VER=25.3
 ERLANG_VER=19.3
-
 sws=(
-    # shell
-    zsh \
-    shadowsocks \
-    # basic
-    trash-cli \
-    tree \
-    vim \
-    ssh \
-    openssl \
-    openssl-client \
-    openssl-server \
-    terminator \
-    calibre \
-    graphviz \
-    curl \
-    espeak \
-    shutter \
-    sougou \
-    # interactive
-    silversearcher-ag \
-    git \
-    emacs \
-    erlang \
-    golang \
-    inkscape \
-    nautilus-open-terminal
-    # optional
-    ansible
+    # # shell
+    # zsh \
+    # shadowsocks \
+    # # basic
+    # trash-cli \
+    # tree \
+    # vim \
+    # ssh \
+    # openssl \
+    # openssl-client \
+    # openssl-server \
+    # terminator \
+    # calibre \
+    # graphviz \
+    # curl \
+    # espeak \
+    # shutter \
+    # sougou \
+    # # interactive
+    # silversearcher-ag \
+    # git \
+    # emacs \
+    # erlang \
+    # golang \
+    # inkscape \
+    # nautilus-open-terminal
+    # # optional
+    # ansible
 )
 
 function interactive_install() {
