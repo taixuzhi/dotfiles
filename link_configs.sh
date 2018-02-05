@@ -25,8 +25,15 @@ SRC_EMACS=${THIS_DIR}/emacs.d
 DIST_EMACS=${HOME}/.emacs.d
 lnif $SRC_EMACS $DIST_EMACS
 
-# unlink and link terminator conf 
-echo ">>>> unlink and link ~/.config/terminator/config" 
+# unlink and link terminator conf
+echo ">>>> unlink and link ~/.config/terminator/config"
 SRC_TERM=${CONF_DIR}/terminator.conf
 DIST_TERM=${HOME}/.config/terminator/config
+lnif $SRC_TERM $DIST_TERM
+
+
+# unlink and link gitconfig
+echo ">>>> unlink and link ~/.gitconfig"
+SRC_TERM=${CONF_DIR}/gitconfig
+DIST_TERM=${HOME}/.gitconfig
 lnif $SRC_TERM $DIST_TERM
