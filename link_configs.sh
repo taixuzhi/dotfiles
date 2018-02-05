@@ -15,7 +15,7 @@ lnif() {
 
 # unlink and link .zshrc
 echo ">>>> unlink and link ~/.zshrc"
-SRC_ZSHRC=${CONF_DIR}/zshrc
+SRC_ZSHRC=${CONF_DIR}/zshrc.sh
 DIST_ZSHRC=${HOME}/.zshrc
 lnif $SRC_ZSHRC $DIST_ZSHRC
 
