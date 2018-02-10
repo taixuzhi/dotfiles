@@ -273,9 +273,9 @@
 ;;----------------------------------------------------------------------------
 ;; other programming languages
 ;;----------------------------------------------------------------------------
-(use-package crontab-mode
-             :defer t
-             :mode "\\.?cron\\(tab\\)?\\'")
+;; (use-package crontab-mode
+;;              :defer t
+;;              :mode "\\.?cron\\(tab\\)?\\'")
 (use-package markdown-mode
              :defer t
              :config
