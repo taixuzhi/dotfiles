@@ -327,10 +327,4 @@
 ;;                   (esk-helm-dash-install docset))
 ;;                 )))
 
-(use-package gotham-theme        :ensure t :defer t)
-(use-package atom-one-dark-theme :ensure t :defer t)
-(use-package monokai-theme       :ensure t :defer t)
-(use-package solarized-theme     :ensure t :defer t)
-(use-package telephone-line      :ensure t :config (telephone-line-mode 1))
-
 (provide 'init-pkgs)

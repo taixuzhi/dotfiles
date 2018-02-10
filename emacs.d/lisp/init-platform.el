@@ -100,6 +100,15 @@
 (global-set-key (kbd "C-c o") 'youdao-dictionary-play-voice-at-point)
 ;; ---------------------------- end youdao -------------------------------- 
 
+(use-package telephone-line      :ensure t :config (telephone-line-mode 1))
+
+(use-package monokai-theme       :ensure t :defer t)
 (load-theme 'monokai t)
+;; (use-package gotham-theme        :ensure t :defer t)
+;; (load-theme 'gotham t)
+;; (use-package atom-one-dark-theme :ensure t :defer t)
+;; (load-theme 'atom-one-dark t)
+;; (use-package solarized-theme     :ensure t :defer t)
+;; (load-theme 'solarized t)
 
 (provide 'init-platform)

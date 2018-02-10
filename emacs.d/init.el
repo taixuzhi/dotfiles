@@ -29,7 +29,9 @@
 
 ;;; install packages
 (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
-                         ("melpa" . "http://elpa.emacs-china.org/melpa/")))
+                         ("melpa" . "http://elpa.emacs-china.org/melpa/")
+                         ("org" . "http://elpa.emacs-china.org/org/")))
+
 ;; use proxy if repository is not access.
 ;; (setq url-proxy-services '(("no_proxy" . "^\\(localhost\\|10.*\\)")
 ;;                            ("http" . "127.0.0.1:8123")
@@ -56,3 +58,4 @@
 
 
 (provide 'init)
+(
