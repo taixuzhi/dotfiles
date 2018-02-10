@@ -90,7 +90,7 @@
                          htmlize-many-files
                          htmlize-many-files-dired
                          htmlize-region))
-
+(require 'org-page)
 (use-package org-page
              :ensure t
              :defer t
