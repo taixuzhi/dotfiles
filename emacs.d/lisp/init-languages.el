@@ -1,6 +1,5 @@
 ;;; init-languages.el --- Set up programming languages
 ;;; Commentary:
-
 ;; Basic programming languages
 
 ;;; Code:
@@ -8,55 +7,6 @@
 ;; --------------------------------------------------------------------
 ;; generate the tag files
 ;; --------------------------------------------------------------------
-;; scheme-1
-;; (add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
-;; global、gtags、gtags-cscope三个命令。global是查询，gtags是生成索引文件，gtags-cscope是与cscope一样的界面
-;; 查询使用的命令是global和gtags-cscope。前者是命令行界面，后者是与cscope兼容的ncurses界面
-;; helm-ggtags
-;(if
-;    (executable-find "global")
-;    (progn
-;      (use-package bpr :ensure t)
-;      (use-package helm-gtags
-;        :diminish helm-gtags-mode
-;        :init
-;        (add-hook 'dired-mode-hook 'helm-gtags-mode)
-;        (add-hook 'eshell-mode-hook 'helm-gtags-mode)
-;        (add-hook 'c-mode-hook 'helm-gtags-mode)
-;        (add-hook 'c++-mode-hook 'helm-gtags-mode)
-;        (add-hook 'asm-mode-hook 'helm-gtags-mode)
-;        (add-hook 'go-mode-hook (lambda () (helm-gtags-mode)))
-;        (add-hook 'python-mode-hook (lambda () (helm-gtags-mode)))
-;        (add-hook 'ruby-mode-hook (lambda () (helm-gtags-mode)))
-;        (add-hook 'lua-mode-hook (lambda () (helm-gtags-mode)))
-;        (add-hook 'js-mode-hook (lambda () (helm-gtags-mode)))
-;        (add-hook 'erlang-mode-hook (lambda () (helm-gtags-mode)))
-;        :config
-;        ;(custom-set-variables
-;        ; '(helm-gtags-prefix-key "C-t")
-;        ; '(helm-gtags-suggested-key-mapping t))
-;        (setq
-;         helm-gtags-ignore-case t
-;         helm-gtags-auto-update t
-;         helm-gtags-use-input-at-cursor t
-;         helm-gtags-pulse-at-cursor t
-;         helm-gtags-prefix-key "\C-cg"
-;         helm-gtags-suggested-key-mapping t
-;         )
-;         (define-key helm-gtags-mode-map (kbd "C-]") 'helm-gtags-dwim)
-;         (define-key helm-gtags-mode-map (kbd "C-t") 'helm-gtags-pop-stack)
-;        ))
-;  (message "%s: GNU GLOBAL not found in exec-path. helm-gtags will not be used." 'please check))
-
-;; scheme-2
-;; /usr/local/Cellar/global/6.5.5/share/gtags/gtags.el
-;; gtags --gtagslabel=pygments --debug
-;; or use ensure t
-
-;; scheme-2
-;; /usr/local/Cellar/global/6.5.5/share/gtags/gtags.el
-;; gtags --gtagslabel=pygments --debug
-;; (use-package gtags :ensure t)
 (require 'gtags)
 (use-package bpr :ensure t)
 
@@ -112,7 +62,7 @@
 ;;---------------------------------------------------------------
 (let* ((emacs-version "2.11.1")
        (tools-path
-         (concat "/usr/local/lib/erlang/lib/tools-" emacs-version "/emacs")))
+        (concat "/usr/local/lib/erlang/lib/tools-" emacs-version "/emacs")))
   (when (file-exists-p tools-path)
     (setq load-path (cons tools-path load-path))
     (setq erlang-root-dir "/usr/local/lib/erlang")
@@ -127,24 +77,12 @@
          (man-args (format "-M %s %s" man-path (current-word))))
     (man man-args)))
 
-(defun erlang-insert-binary ()
-  "Inserts a binary string into an Erlang buffer and places the
-  point between the quotes."
-  (interactive)
-  (insert "<<\"\">>")
-  (backward-char 3)
-  )
-
-(eval-after-load "erlang" '(define-key erlang-mode-map (kbd "C-c b") 'erlang-insert-binary))
-
-(add-to-list 'auto-mode-alist '("rebar.config" . erlang-mode)) ;; rebar
-(add-to-list 'auto-mode-alist '("rebar.config.script" . erlang-mode)) ;; rebar
-(add-to-list 'auto-mode-alist '("app.config" . erlang-mode)) ;; embedded node/riak
-(add-to-list 'auto-mode-alist '("\\.src$" . erlang-mode)) ;; User customizations file
-(add-to-list 'auto-mode-alist '("\\.erlang$" . erlang-mode)) ;; User customizations file
-(add-to-list 'auto-mode-alist '("\\.erl$" . erlang-mode)) ;; User customizations file
-;;(add-to-list 'auto-mode-alist '(".riak_test.config" . erlang-mode))
-;;(add-hook 'erlang-mode-hook 'whitespace-mode)
+(add-to-list 'auto-mode-alist '("rebar.config" . erlang-mode))
+(add-to-list 'auto-mode-alist '("rebar.config.script" . erlang-mode))
+(add-to-list 'auto-mode-alist '("app.config" . erlang-mode))
+(add-to-list 'auto-mode-alist '("\\.src$" . erlang-mode)) 
+(add-to-list 'auto-mode-alist '("\\.erlang$" . erlang-mode))
+(add-to-list 'auto-mode-alist '("\\.erl$" . erlang-mode))
 
 ;;;----------------------------------------------------------------------------
 ;;; lua
@@ -194,17 +132,6 @@
              :init
              (add-hook 'emacs-lisp-mode-hook 'color-identifiers-mode)
              :diminish color-identifiers-mode)
-
-;(use-package lisp-mode
-;             :bind (:map emacs-lisp-mode-map ("C-c C-z" . ielm))
-;             :init
-;             (defconst lisp--prettify-symbols-alist
-;                       '(("lambda"  . ?λ)      ; Shrink this
-;                         ("."       . ?•)))    ; Enlarge this
-;             :config
-;             (add-hook 'emacs-lisp-mode-hook 'global-prettify-symbols-mode)
-;             (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
-;             (add-hook 'emacs-lisp-mode-hook 'activate-aggressive-indent))
 
 ;; refer https://www.emacswiki.org/emacs/PareditCheatsheet
 (use-package paredit
@@ -292,9 +219,11 @@
              (setq markdown-command "pandoc --smart -f markdown -t html")
              ;(setq markdown-css-paths `(,(expand-file-name "markdown.css" vendor-dir)))
              )
+
 (use-package yaml-mode
              :defer t
              :mode ("\\.yml$" . yaml-mode))
+
 (use-package ansible
              :defer t
              :init (add-hook 'yaml-mode-hook '(lambda () (ansible 1))))
