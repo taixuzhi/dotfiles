@@ -99,6 +99,7 @@
 (global-set-key (kbd "C-c y") 'youdao-dictionary-search-at-point)
 (global-set-key (kbd "C-c o") 'youdao-dictionary-play-voice-at-point)
 ;; ---------------------------- end youdao -------------------------------- 
+(global-set-key (kbd "C-c C-j") 'dired-jump)
 
 (use-package telephone-line      :ensure t :config (telephone-line-mode 1))
 

@@ -35,11 +35,6 @@
   :defer 5
   :bind (("C-x i" . json-reformat-region)))
 
-(use-package dired+
-  :ensure t
-  :commands (dired-jump)
-  :bind (("C-x C-j" . dired-jump)))
-
 (use-package dired-k
   :ensure t
   :config
