@@ -7,6 +7,20 @@
 (setq auto-mode-alist (cons '("\\.org$" . org-mode) auto-mode-alist))
 
 ;;; org-page
+(use-package uimage
+             :ensure t
+             :defer t
+             )
+
+(use-package htmlize
+             :ensure t
+             :defer t
+             :commands (htmlize-buffer
+                         htmlize-file
+                         htmlize-many-files
+                         htmlize-many-files-dired
+                         htmlize-region))
+
 (require 'org-page)
 (setq op/repository-directory "~/myin/congleetea.github.io")
 (setq op/site-domain "https://congleetea.github.io")
