@@ -27,6 +27,9 @@ lnif $SRC_EMACS $DIST_EMACS
 
 # unlink and link terminator conf
 echo ">>>> unlink and link ~/.config/terminator/config"
+if [ ! -d ${HOME}/.config/terminator ];then
+    mkdir -p ${HOME}/.config/terminator 
+fi
 SRC_TERM=${CONF_DIR}/terminator.conf
 DIST_TERM=${HOME}/.config/terminator/config
 lnif $SRC_TERM $DIST_TERM
