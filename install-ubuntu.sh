@@ -53,6 +53,7 @@ function interactive_install() {
 
 function install(){
     sws=$1
+    sudo apt-get update
     for sw in ${sws[@]}
     do
         echo ""
@@ -156,9 +157,6 @@ function install(){
     done
 }
 
-sudo apt-get update
 install $first_sws
-sudo apt-get update
 install $next_sws
-sudo apt-get update
 install $option_sws
