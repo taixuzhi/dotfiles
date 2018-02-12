@@ -14,18 +14,17 @@ EMACS_VER=24.5
 ERLANG_VER=19.3
 sws=(
     # # shell
-    # sougou \
-    # zsh \
-    # shadowsocks \
-    # trash-cli \
-    # tree \
     # vim \
-    # git \
-    # ssh \
-    # openssl \
-    # openssl-client \
-    # openssl-server \
-    # terminator \
+    # trash-cli \
+    # sougou 
+    # terminator
+    # zsh 
+    shadowsocks 
+    # tree 
+    # ssh
+    # openssl
+    # openssl-client
+    # openssl-server
     # silversearcher-ag \
     # emacs \
     # curl \
@@ -66,12 +65,10 @@ function install(){
             cd ${SWDIR} && wget "http://pinyin.sogou.com/linux/download.php?f=linux&bit=64" -O "sougou_64.deb"
             sudo dpkg -i sougou_64.deb
         elif [ $sw == "zsh" ];then
-            cd ~
-            if [! -d "~/.oh-my-zsh" ];then
+            cd /home/$USER 
+            if [ ! -d "/home/$USER/.oh-my-zsh" ];then
                 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
             fi
-            # cp ~/.zshrc ~/.zshrc.orig
-            # cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
             sudo apt-get install -y zsh
             chsh -s /bin/zsh
             git clone https://github.com/joelthelion/autojump.git
@@ -131,10 +128,10 @@ function install(){
             # instalation for shadowsocks in terminator
             # http://droidyue.com/blog/2016/04/04/set-shadowsocks-proxy-for-terminal/index.html
             sudo apt-get install python-pip
-            sudo pip install shadowsocks
+            sudo pip install --upgrade git+https://github.com/shadowsocks/shadowsocks.git@master
+	    cd ${SWDIR} && tar xvf libsodium.tar.gz && cd libsodium-stable && ./configure --prefix=/usr && sudo make install
             sudo apt-get install -y polipo
             sudo cp ${CONFIGDIR}/polipo.conf /etc/polipo/config
-            sudo echo "export http_proxy=http://localhost:8123" >> ~/.zshrc
             sudo service polipo stop
             sudo service polipo start
         elif [ $sw == "ansible" ]; then
