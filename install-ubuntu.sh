@@ -6,40 +6,39 @@
 #
 
 # sudo apt-get update
-PWD=$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )
-SWDIR=${PWD}/ubuntu_pkgs
-CONFIGDIR=${PWD}/ubuntu_configs
+THISDIR=$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )
+SWDIR=${THISDIR}/ubuntu_pkgs
+CONFIGDIR=${THISDIR}/ubuntu_configs
 
-EMACS_VER=25.3
+EMACS_VER=24.5
 ERLANG_VER=19.3
 sws=(
     # # shell
+    # sougou \
     # zsh \
-    # albert \
     # shadowsocks \
-    # # basic
     # trash-cli \
     # tree \
     # vim \
+    # git \
     # ssh \
     # openssl \
     # openssl-client \
     # openssl-server \
     # terminator \
-    # calibre \
-    # graphviz \
+    # silversearcher-ag \
+    # emacs \
     # curl \
     # espeak \
     # shutter \
-    # sougou \
+    # albert \
+    # # basic
+    # calibre \
+    # graphviz \
     # # interactive
-    # silversearcher-ag \
-    # git \
-    # emacs \
     # erlang \
     # golang \
     # inkscape \
-    # nautilus-open-terminal
     # # optional
     # ansible
 )
@@ -56,13 +55,13 @@ function install(){
         echo "================ install $sw " 
         echo "===================================================="
         if [ $sw == "git" ];then
-            interactive_install()
+            interactive_install
             sudo add-apt-repository ppa:git-core/ppa
             sudo apt-get update
             sudo apt-get install -y git
             sudo apt-get install -y meld
         elif [ $sw == "sougou" ];then
-            interactive_install()
+            interactive_install
             sudo apt-get install -y fcitx libssh2-1
             cd ${SWDIR} && wget "http://pinyin.sogou.com/linux/download.php?f=linux&bit=64" -O "sougou_64.deb"
             sudo dpkg -i sougou_64.deb
@@ -145,7 +144,7 @@ function install(){
             sudo apt-get install -y ansible
         elif [ $sw == "albert" ]; then
             # https://github.com/albertlauncher/albert/issues/123
-            interactive_install()
+            interactive_install
             sudo add-apt-repository ppa:nilarimogard/webupd8
             sudo apt-get update
             sudo apt-get install albert
