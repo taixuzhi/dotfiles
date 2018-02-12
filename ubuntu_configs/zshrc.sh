@@ -125,7 +125,6 @@ alias dl="cd ~/Downloads"
 alias dc="cd ~/Documents"
 alias dt="cd ~/Desktop"
 alias boke="cd ~/Documents/gowo/walk/congleetea.github.io"
-alias dkrmi="docker rmi $(docker images -q --filter "dangling=true")"
 alias say="espeak"
 #mkdir and cd
 function mkcd() { mkdir -p "$@" && cd "$_"; }
