@@ -1,0 +1,16 @@
+<div>
+    <header>
+    <hgroup>
+        <h1>Tags</h1>
+    </hgroup>
+    </header>
+
+    <section id="wrapper" class="no-bottom-margin">
+    <ul class="org-ul">
+      {{#tags}}
+        <li><a href="{{tag-uri}}">{{tag-name}} ({{count}})</a></li>
+        <br />
+      {{/tags}}
+    </ul>
+  </section>
+</div>

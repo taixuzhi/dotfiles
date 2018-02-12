@@ -1,0 +1,15 @@
+<div>
+    <header>
+    <hgroup>
+        <h1>博客</h1>
+    </hgroup>
+    </header>
+    <section id="wrapper" class="no-bottom-margin">
+    <ul class="org-ul">
+      {{#posts}}
+        <li>{{date}}&nbsp;&nbsp;»&nbsp;&nbsp;<a href="{{post-uri}}">{{post-title}}</a></li>
+        <br />
+      {{/posts}}
+    </ul>
+  </section>
+</div>
