@@ -12,34 +12,39 @@ CONFIGDIR=${THISDIR}/ubuntu_configs
 
 EMACS_VER=24.5
 ERLANG_VER=19.3
-sws=(
+GOVERSION=1.9.5
+
+first_sws=(
+    vim
+    terminator
+    trash-cli
+    sougou
+    zsh
+    shadowsocks
+)
+
+next_sws=(
     # # shell
-    # vim \
-    # trash-cli \
-    # sougou 
-    # terminator
-    # zsh 
-    shadowsocks 
-    # tree 
-    # ssh
-    # openssl
-    # openssl-client
-    # openssl-server
-    # silversearcher-ag \
-    # emacs \
-    # curl \
-    # espeak \
-    # shutter \
-    # albert \
-    # # basic
-    # calibre \
-    # graphviz \
-    # # interactive
-    # erlang \
-    # golang \
-    # inkscape \
-    # # optional
-    # ansible
+    tree
+    ssh
+    openssl
+    openssl-client
+    openssl-server
+    silversearcher-ag
+    curl
+    espeak
+    shutter
+    albert
+    calibre
+    graphviz
+    inkscape
+)
+
+option_sws=(
+    emacs
+    erlang
+    golang
+    ansible
 )
 
 function interactive_install() {
@@ -47,11 +52,12 @@ function interactive_install() {
 }
 
 function install(){
+    sws=$1
     for sw in ${sws[@]}
     do
         echo ""
         echo "===================================================="
-        echo "================ install $sw " 
+        echo "================ install $sw "
         echo "===================================================="
         if [ $sw == "git" ];then
             interactive_install
@@ -65,7 +71,7 @@ function install(){
             cd ${SWDIR} && wget "http://pinyin.sogou.com/linux/download.php?f=linux&bit=64" -O "sougou_64.deb"
             sudo dpkg -i sougou_64.deb
         elif [ $sw == "zsh" ];then
-            cd /home/$USER 
+            cd /home/$USER
             if [ ! -d "/home/$USER/.oh-my-zsh" ];then
                 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
             fi
@@ -79,18 +85,13 @@ function install(){
             ~/.fzf/install
             source ~/.zshrc
         elif [ $sw == "emacs" ];then
-            cd ${SWDIR}
             sudo apt-get install -y build-essential texinfo libx11-dev libxpm-dev \
-                 libgif-dev libxaw7-dev libjpeg-dev libpng12-dev libtiff4-dev \
-                 libncurses5-dev xsel magit
-            tar xvf emacs-${EMACS_VER}.tar.gz
-            cd emacs-${EMACS_VER} && ./configure && make && sudo make install
-            cd ${SWDIR}
-            tar xvf global-6.5.7.tar.gz
+                 libgif-dev libxaw7-dev libjpeg-dev libpng12-dev libtiff5-dev libncurses5-dev xsel magit
+            cd ${SWDIR} && tar xvf emacs-${EMACS_VER}.tar.gz && cd emacs-${EMACS_VER} && ./configure && make && sudo make install
             sudo apt-get install exuberant-ctags
-            cd global-6.5.7 && ./configure && make && sudo make install
-            echo "export GTAGSCONF=/usr/local/share/gtags/gtags.conf" >> ~/.zshrc
-            echo "export GTAGSLABEL=ctags gtags" >> ~/.zshrc
+            cd ${SWDIR} && tar xvf global-6.5.7.tar.gz && cd global-6.5.7 && ./configure && make && sudo make install
+            # echo "export GTAGSCONF=/usr/local/share/gtags/gtags.conf" >> ~/.zshrc
+            # echo "export GTAGSLABEL=ctags gtags" >> ~/.zshrc
         elif [ $sw == "erlang" ]; then
             cd ${SWDIR}
             wget http://erlang.org/download/otp_src_$ERLANG_VER.tar.gz
@@ -106,7 +107,6 @@ function install(){
             sudo apt-get install rlwrap  # 可以用以erlang的历史命令记录。
             # 在zshrc中添加：alias erl='/usr/bin/rlwrap -a erl'
         elif [ $sw == "golang" ]; then
-            GOVERSION=1.7.5
             GOTO=/usr/local
             GOROOT=${GOTO}/go
             GOPATH=/home/${USER}/gitlab/go
@@ -147,13 +147,18 @@ function install(){
             sudo apt-get install albert
             ExnDir="~/.local/share/albert/external"
             if [ ! -d $ExnDir ];then
-                mkdir -p $ExnDir 
+                mkdir -p $ExnDir
             fi
-            cp $CONFIGDIR/org.albert.extension.external.switchapp.py $ExnDir 
+            cp $CONFIGDIR/org.albert.extension.external.switchapp.py $ExnDir
         else
             sudo apt-get install -y $sw
         fi
     done
 }
 
-install
+sudo apt-get update
+install $first_sws
+sudo apt-get update
+install $next_sws
+sudo apt-get update
+install $option_sws
