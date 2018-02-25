@@ -11,6 +11,33 @@
              :ensure t
              :defer t
              )
+(setq org-plantuml-jar-path "~/.emacs.d/vendor/plantuml.jar")	
+(setq org-ditaa-jar-path "~/.emacs.d/vendor/ditaa0_9.jar")	
+(setq org-confirm-babel-evaluate nil)	
+(add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append)	
+	
+(require 'ob)	
+(require 'ob-plantuml)	
+	
+(org-babel-do-load-languages	
+ 'org-babel-load-languages	
+ '(	
+   (emacs-lisp . t)	
+   (org . t)	
+   (sh . t)	
+   (C . t)	
+   (python . t)	
+   (awk . t)	
+   (plantuml . t)	
+   (ditaa . t)	
+   ))	
+	
+;; Highlight and indent source code blocks	
+(setq org-src-fontify-natively t)	
+(setq org-src-tab-acts-natively t)	
+	
+;; Prevent confirmation	
+(setq org-confirm-babel-evaluate nil)
 
 (use-package htmlize
              :ensure t
