@@ -35,7 +35,6 @@ link terminator config, .emacs.d, .zshrc.
    | Ctrl+h f | 查看函数             |
    | Ctrl+h v | 查看变量             |
    | Ctrl+h k | 查看快捷键绑定的函数 |
-   |          |                      |
 
    | package                     | 说明                                             | link                                    |
    |-----------------------------+--------------------------------------------------+-----------------------------------------|
@@ -58,5 +57,6 @@ link terminator config, .emacs.d, .zshrc.
    | company                     | 补全工具                                         | http://company-mode.github.io/          |
    | dired+                      | 文件目录操作                                     |                                         |
    | dired-k                     | 像 [[https://github.com/supercrabtree/k][zsh的k一样显示目录]]                            | https://github.com/syohex/emacs-dired-k |
+   | evil                        |                                                  | 使用2017版                              |
 
 helm: 模糊查找文件。
