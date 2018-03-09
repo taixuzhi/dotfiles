@@ -60,3 +60,20 @@ link terminator config, .emacs.d, .zshrc.
    | evil                        |                                                  | 使用2017版                              |
 
 helm: 模糊查找文件。
+
+
+*** GUI不能输入中文
+
+    安装相关字符集
+
+    http://wangzhe3224.github.io/emacs/2015/08/31/fcitx-emacs.html
+    
+
+    先检查是否有zh_CN.UTF-8库，如果有，在/usr/local/share/application/emacs.desktop中修改：
+
+    如： https://gist.github.com/blindFS/c258b0c92008c5f8678a
+
+    #+BEGIN_SRC text
+    Exec=env LC_CType=zh_CN.UTF-8 emacs %F
+    #+END_SRC
+
