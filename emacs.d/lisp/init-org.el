@@ -43,10 +43,10 @@
              :ensure t
              :defer t
              :commands (htmlize-buffer
-                         htmlize-file
-                         htmlize-many-files
-                         htmlize-many-files-dired
-                         htmlize-region))
+                        htmlize-file
+                        htmlize-many-files
+                        htmlize-many-files-dired
+                        htmlize-region))
 
 (require 'org-page)
 (setq op/repository-directory "~/myin/congleetea.github.io")
