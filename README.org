@@ -59,21 +59,33 @@ link terminator config, .emacs.d, .zshrc.
    | dired-k                     | 像 [[https://github.com/supercrabtree/k][zsh的k一样显示目录]]                            | https://github.com/syohex/emacs-dired-k |
    | evil                        |                                                  | 使用2017版                              |
 
-helm: 模糊查找文件。
+  helm: 模糊查找文件。
 
 
 *** GUI不能输入中文
 
-    安装相关字符集
-
-    http://wangzhe3224.github.io/emacs/2015/08/31/fcitx-emacs.html
+    refer to http://wangzhe3224.github.io/emacs/2015/08/31/fcitx-emacs.html
     
+    - 确保安装zh_CN.UTF-8库
+      #+BEGIN_SRC shell
+        locale -a
+      #+END_SRC
+      看是否有zh_CN.utf8，如果没有要安装。
+      
+      安装方法：
+      #+BEGIN_SRC shell
+        sudo apt-get install -y language-pack-zh-hans
+      #+END_SRC
 
-    先检查是否有zh_CN.UTF-8库，如果有，在/usr/local/share/application/emacs.desktop中修改：
+    - 配置.zshrc
+      #+BEGIN_SRC text
+        export LC_CTYPE=zh_CN.UTF-8
+      #+END_SRC
+ 
+      
+    - 在/usr/local/share/application/emacs.desktop中修改
 
-    如： https://gist.github.com/blindFS/c258b0c92008c5f8678a
-
-    #+BEGIN_SRC text
-    Exec=env LC_CType=zh_CN.UTF-8 emacs %F
-    #+END_SRC
+      #+BEGIN_SRC text
+        Exec=env LC_CType=zh_CN.UTF-8 emacs %F
+      #+END_SRC
 
