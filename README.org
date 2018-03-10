@@ -55,7 +55,7 @@ link terminator config, .emacs.d, .zshrc.
    | ag, helm-ag                 | 查找工具                                         |                                         |
    | projectile, helm-projectile | 项目相关                                         |                                         |
    | company                     | 补全工具                                         | http://company-mode.github.io/          |
-   | dired+                      | 文件目录操作                                     |                                         |
+   | dired                 	 | 文件目录操作                                     |                                         |
    | dired-k                     | 像 [[https://github.com/supercrabtree/k][zsh的k一样显示目录]]                            | https://github.com/syohex/emacs-dired-k |
    | evil                        |                                                  | 使用2017版                              |
 
