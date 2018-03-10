@@ -261,7 +261,7 @@
 (use-package company
   :ensure t
   :defer t
-  :init (global-company-mode)
+  :init (global-company-mode)           ; 设置在所有buffers中使用company-mode
   :config
   (setq company-idle-delay 0.2)
   (setq company-selection-wrap-around t)
