@@ -138,7 +138,7 @@ export GTAGSLABEL=ctags gtags
 export NVM_DIR="/home/congleetea/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-[[ -s /home/congleetea/.autojump/etc/profile.d/autojump.sh ]] && source /home/congleetea/.autojump/etc/profile.d/autojump.sh
+[[ -s /home/$USER/.autojump/etc/profile.d/autojump.sh ]] && source /home/$USER/.autojump/etc/profile.d/autojump.sh
 
 setxkbmap -option ctrl:swapcaps
 
