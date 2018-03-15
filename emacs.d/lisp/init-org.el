@@ -49,7 +49,7 @@
                         htmlize-region))
 
 (require 'org-page)
-(setq op/repository-directory "~/myin/congleetea.github.io")
+(setq op/repository-directory "~/gitlab/congleetea.github.io")
 (setq op/site-domain "https://congleetea.github.io")
 (setq op/personal-github-link "https://github.com/congleetea")
 (setq op/site-main-title "qingyuan")
