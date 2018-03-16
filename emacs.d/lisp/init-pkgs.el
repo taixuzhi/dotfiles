@@ -5,16 +5,6 @@
 (use-package diminish
   :ensure t)
 
-;;; Make Emacs use the $PATH set up by the user's shell
-(use-package exec-path-from-shell
-  :ensure t
-  :defer 10
-  :config
-  (exec-path-from-shell-initialize)
-  (setq exec-path-from-shell-check-startup-files nil)
-  (setq exec-path-from-shell-arguments '("-l"))
-  (exec-path-from-shell-copy-env "GOPATH"))
-
 ;;; Emacs package that displays available keybindings in popup
 (use-package which-key
   :ensure t
