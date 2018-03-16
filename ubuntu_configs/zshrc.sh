@@ -1,5 +1,5 @@
 ##########################################################################################
-#ln -s /home/congleetea/dotfiles/zshrc /home/congleetea/.zshrc   # 使用绝对路径进行软链接#
+#ln -s /home/$USER/dotfiles/zshrc /home/$USER/.zshrc   # 使用绝对路径进行软链接#
 ##########################################################################################
 
 # Path to your oh-my-zsh installation.
@@ -55,7 +55,7 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git git-flow-avh autojump)
-[[ -s /home/congleetea/.autojump/etc/profile.d/autojump.sh ]] && source /home/congleetea/.autojump/etc/profile.d/autojump.sh
+[[ -s /home/$USER/.autojump/etc/profile.d/autojump.sh ]] && source /home/$USER/.autojump/etc/profile.d/autojump.sh
 # User configuration
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -124,7 +124,6 @@ alias szsh="source ~/.zshrc"
 alias dl="cd ~/Downloads"
 alias dc="cd ~/Documents"
 alias dt="cd ~/Desktop"
-alias boke="cd ~/Documents/gowo/walk/congleetea.github.io"
 alias say="espeak"
 #mkdir and cd
 function mkcd() { mkdir -p "$@" && cd "$_"; }
@@ -135,7 +134,7 @@ export GTAGSLABEL=ctags gtags
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export NVM_DIR="/home/congleetea/.nvm"
+export NVM_DIR="/home/${USER}/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 [[ -s /home/$USER/.autojump/etc/profile.d/autojump.sh ]] && source /home/$USER/.autojump/etc/profile.d/autojump.sh
@@ -146,7 +145,6 @@ setxkbmap -option ctrl:swapcaps
 alias proxy='export http_proxy=http://127.0.0.1:8123;export HTTPS_PROXY=$http_proxy;export HTTP_PROXY=$http_proxy;export FTP_PROXY=$http_proxy;export https_proxy=$http_proxy;export ftp_proxy=$http_proxy;'
 alias noproxy='unset http_proxy;unset HTTPS_PROXY;unset HTTP_PROXY;unset FTP_PROXY;unset https_proxy;unset ftp_proxy'
 
-export LC_CTYPE=zh_CN.UTF-8
 # export JAVA_HOME=/usr/local/jdk1.8.0
 # export JRE_HOME=${JAVA_HOME}/jre
 # export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
@@ -154,5 +152,5 @@ export PATH=${JAVA_HOME}/bin:$PATH
 export GTAGSCONF=/usr/local/share/gtags/gtags.conf
 export GTAGSLABEL=ctags gtags
 export GOROOT=/usr/local/go
-export GOPATH=/home/congleetea/gitlab/go
-export PATH=$PATH:/usr/local/go/bin:/home/congleetea/gitlab/go/bin
+export GOPATH=/home/${USER}/gitlab/go
+export PATH=$PATH:/usr/local/go/bin:/home/${USER}/gitlab/go/bin
