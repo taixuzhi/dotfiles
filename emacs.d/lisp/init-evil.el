@@ -43,6 +43,8 @@
     "w"  'save-buffer
     "x"  'helm-M-x
     "y"  'yank-to-x-clipboard
+    "["  'backward-sexp
+    "]"  'forward-sexp
     )
 
   (defun magit-blame-toggle ()
