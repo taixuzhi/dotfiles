@@ -57,6 +57,12 @@
     (setq tab-width 4)
     (setq c-basic-offset 4)))
 
+(require 'company-c-headers)
+(use-package company-c-headers
+  :init
+  (add-to-list 'company-backends 'company-c-headers)
+  (add-to-list 'company-c-headers-path-system "/usr/include/c++/5.4.0/"))
+
 ;;---------------------------------------------------------------
 ;; Erlang
 ;;---------------------------------------------------------------
