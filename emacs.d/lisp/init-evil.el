@@ -17,13 +17,11 @@
     "ab"   'beginning-of-defun
     "ae"   'end-of-defun
     "af"   'mark-defun
-    ;"b"  'helm-mini             ;; Switch to another buffer
     "b"   'projectile-switch-to-buffer
     "B"  'magit-blame-toggle
     "c"  'comment-dwim
     "d"  'kill-this-buffer
     "D"  'delete-window
-    ;"D"  'open-current-line-in-codebase-search
     "e"  (lambda () (interactive) (get-erl-man))
     "E"  'sudo-edit-current-file
     "f"  'helm-imenu            ;; Jump to function in buffer
@@ -39,7 +37,7 @@
     "o"  'delete-other-windows  ;; C-w o
     "O"  'other-frame
     "p"  'helm-show-kill-ring
-    "P"   'projectile-find-file-other-window
+    "P"  'projectile-find-file-other-window
     "s"  'ag-project            ;; Ag search from project's root
     "r"  'chrome-reload
     "R"  (lambda () (interactive) (font-lock-fontify-buffer) (redraw-display))
