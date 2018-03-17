@@ -17,6 +17,10 @@
     "ab"   'beginning-of-defun
     "ae"   'end-of-defun
     "af"   'mark-defun
+    "aH"   'hs-hide-all
+    "aS"  'hs-show-all
+    "ah"  'hs-hide-block
+    "as"  'hs-show-block
     "b"   'projectile-switch-to-buffer
     "B"  'magit-blame-toggle
     "c"  'comment-dwim
