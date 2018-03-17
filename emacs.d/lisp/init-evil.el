@@ -14,6 +14,9 @@
     "a]"  'forward-sexp
     "ad"  'kill-sexp
     "am"   'mark-sexp
+    "ab"   'beginning-of-defun
+    "ae"   'end-of-defun
+    "af"   'mark-defun
     ;"b"  'helm-mini             ;; Switch to another buffer
     "b"   'projectile-switch-to-buffer
     "B"  'magit-blame-toggle
