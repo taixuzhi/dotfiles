@@ -10,6 +10,10 @@
     ":"  'eval-expression
     "aa" 'align-regexp
     "a=" 'my-align-single-equals
+    "a["  'backward-sexp
+    "a]"  'forward-sexp
+    "ad"  'kill-sexp
+    "am"   'mark-sexp
     ;"b"  'helm-mini             ;; Switch to another buffer
     "b"   'projectile-switch-to-buffer
     "B"  'magit-blame-toggle
@@ -43,8 +47,6 @@
     "w"  'save-buffer
     "x"  'helm-M-x
     "y"  'yank-to-x-clipboard
-    "["  'backward-sexp
-    "]"  'forward-sexp
     )
 
   (defun magit-blame-toggle ()
