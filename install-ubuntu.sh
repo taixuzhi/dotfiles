@@ -20,8 +20,7 @@ first_sws=(
     trash-cli
     sougou
     zsh
-    shadowsocks
-)
+    shadowsocks)
 
 next_sws=(
     # # shell
@@ -157,6 +156,6 @@ function install(){
     done
 }
 
-install $first_sws
-install $next_sws
-install $option_sws
+# install "${first_sws[*]}"
+# install "${next_sws[*]}"
+# install "${option_sws[*]}"
