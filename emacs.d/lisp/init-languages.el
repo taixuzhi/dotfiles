@@ -89,9 +89,16 @@
 (add-to-list 'auto-mode-alist '("rebar.config" . erlang-mode))
 (add-to-list 'auto-mode-alist '("rebar.config.script" . erlang-mode))
 (add-to-list 'auto-mode-alist '("app.config" . erlang-mode))
-(add-to-list 'auto-mode-alist '("\\.src$" . erlang-mode)) 
+(add-to-list 'auto-mode-alist '("\\.src$" . erlang-mode))
 (add-to-list 'auto-mode-alist '("\\.erlang$" . erlang-mode))
 (add-to-list 'auto-mode-alist '("\\.erl$" . erlang-mode))
+
+
+;;;----------------------------------------------------------------------------
+;;; cmake
+;;;----------------------------------------------------------------------------
+(use-package cmake-mode
+             :defer t)
 
 ;;;----------------------------------------------------------------------------
 ;;; lua

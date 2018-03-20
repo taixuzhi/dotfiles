@@ -15,6 +15,7 @@ ERLANG_VER=19.3
 GOVERSION=1.9.5
 
 first_sws=(
+    git
     vim
     terminator
     trash-cli
@@ -59,6 +60,7 @@ function install(){
         echo "===================================================="
         echo "================ install $sw "
         echo "===================================================="
+        sleep 5
         if [ $sw == "git" ];then
             interactive_install
             sudo add-apt-repository ppa:git-core/ppa
@@ -88,7 +90,7 @@ function install(){
             sudo apt-get install -y build-essential texinfo libx11-dev libxpm-dev \
                  libgif-dev libxaw7-dev libjpeg-dev libpng12-dev libtiff5-dev libncurses5-dev xsel magit
             cd ${SWDIR} && tar xvf emacs-${EMACS_VER}.tar.gz && cd emacs-${EMACS_VER} && ./configure && make && sudo make install
-            sudo apt-get install exuberant-ctags
+            sudo apt-get install -y exuberant-ctags
             cd ${SWDIR} && tar xvf global-6.5.7.tar.gz && cd global-6.5.7 && ./configure && make && sudo make install
             # echo "export GTAGSCONF=/usr/local/share/gtags/gtags.conf" >> ~/.zshrc
             # echo "export GTAGSLABEL=ctags gtags" >> ~/.zshrc
@@ -104,7 +106,7 @@ function install(){
             tar xvf otp_doc_man_$ERLANG_VER.tar.gz
             sudo cp -r man /usr/local/lib/erlang/
 
-            sudo apt-get install rlwrap  # 可以用以erlang的历史命令记录。
+            sudo apt-get install -y rlwrap  # 可以用以erlang的历史命令记录。
             # 在zshrc中添加：alias erl='/usr/bin/rlwrap -a erl'
         elif [ $sw == "golang" ]; then
             GOTO=/usr/local
@@ -124,10 +126,9 @@ function install(){
             source ~/.zshrc
         elif [ $sw == "shadowsocks" ]; then
             sudo apt-get install -y inkscape
-            sudo apt-get install -y nautilus-open-terminal
             # instalation for shadowsocks in terminator
             # http://droidyue.com/blog/2016/04/04/set-shadowsocks-proxy-for-terminal/index.html
-            sudo apt-get install python-pip
+            sudo apt-get install -y python-pip
             sudo pip install --upgrade git+https://github.com/shadowsocks/shadowsocks.git@master
 	    cd ${SWDIR} && tar xvf libsodium.tar.gz && cd libsodium-stable && ./configure --prefix=/usr && sudo make install
             sudo apt-get install -y polipo
@@ -144,7 +145,7 @@ function install(){
             interactive_install
             sudo add-apt-repository ppa:nilarimogard/webupd8
             sudo apt-get update
-            sudo apt-get install albert
+            sudo apt-get install -y albert
             ExnDir="~/.local/share/albert/external"
             if [ ! -d $ExnDir ];then
                 mkdir -p $ExnDir
