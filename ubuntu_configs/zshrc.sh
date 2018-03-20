@@ -154,3 +154,7 @@ export GTAGSLABEL=ctags gtags
 export GOROOT=/usr/local/go
 export GOPATH=/home/${USER}/gitlab/go
 export PATH=$PATH:/usr/local/go/bin:/home/${USER}/gitlab/go/bin
+
+export ROS_WORKSPACE=~/catkin_ws/src 
+source /opt/ros/kinetic/setup.zsh
+source ~/catkin_ws/devel/setup.zsh
