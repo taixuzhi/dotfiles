@@ -153,10 +153,10 @@ function install(){
             sudo apt-get install -y ansible
         elif [ $sw == "albert" ]; then
             # https://github.com/albertlauncher/albert/issues/123
-            # interactive_install
-            # sudo add-apt-repository ppa:nilarimogard/webupd8
-            # sudo apt-get update
-            # sudo apt-get install -y albert
+            interactive_install
+            sudo add-apt-repository ppa:nilarimogard/webupd8
+            sudo apt-get update
+            sudo apt-get install -y albert
 
             ExnDir="/home/$USER/.local/share/albert/external"
             if [ ! -d "$ExnDir" ]; then
