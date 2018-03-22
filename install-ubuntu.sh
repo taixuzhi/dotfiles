@@ -5,8 +5,10 @@
 # Created: Monday, February 22 2016
 #
 
+set -e
+
 # sudo apt-get update
-THISDIR=$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )
+THISDIR=$( cd "$( dirname "$0")" && pwd )
 SWDIR=${THISDIR}/ubuntu_pkgs
 CONFIGDIR=${THISDIR}/ubuntu_configs
 
@@ -14,41 +16,49 @@ EMACS_VER=24.5
 ERLANG_VER=19.3
 GOVERSION=1.9.5
 
-first_sws=(
-    git
-    vim
-    terminator
-    trash-cli
-    sougou
-    zsh
-    shadowsocks)
+first_sws=(git
+           vim
+           terminator
+           trash-cli
+           sougou
+           zsh
+           shadowsocks)
 
-next_sws=(
-    # # shell
-    tree
-    ssh
-    openssl
-    openssl-client
-    openssl-server
-    silversearcher-ag
-    curl
-    espeak
-    shutter
-    albert
-    calibre
-    graphviz
-    inkscape
-)
+next_sws=(tree
+          ssh
+          openssl
+          openssl-client
+          openssl-server
+          silversearcher-ag
+          curl
+          espeak
+          shutter
+          albert
+          calibre
+          graphviz
+          inkscape)
 
-option_sws=(
-    emacs
-    erlang
-    golang
-    ansible
-)
+option_sws=(emacs
+            erlang
+            golang
+            ansible)
+
+function usage() {
+    echo "usage: "
+    echo "     install-ubuntu.sh init                 : install initial software in first_sws."
+    echo "     install-ubuntu.sh base                 : install basic software in next_sws."
+    echo "     install-ubuntu.sh option               : install optional software in option_sws."
+    echo "     install-ubuntu.sh single SOFTWARE_NAME : install single software."
+}
+
+function echo_tip() {
+    echo "******************* tip ************************"
+    echo ">>>>>>  $1"
+    echo "******************* tip ************************"
+}
 
 function interactive_install() {
-    echo "!!!!!!!!! interactive installation  !!!!!!!!!!!!"
+    echo_tip "Please Note the interactive message>>>>> "
 }
 
 function install(){
@@ -81,8 +91,9 @@ function install(){
             chsh -s /bin/zsh
             git clone https://github.com/joelthelion/autojump.git
             cd autojump && ./install.py
-            echo "[[ -s /home/${USER}/.autojump/etc/profile.d/autojump.sh ]] && source /home/${USER}/.autojump/etc/profile.d/autojump.sh" >> ~/.zshrc
+            # echo "[[ -s /home/${USER}/.autojump/etc/profile.d/autojump.sh ]] && source /home/${USER}/.autojump/etc/profile.d/autojump.sh" >> ~/.zshrc
             echo "autoload -U compinit && compinit -u"
+            rm -rf /home/$USER/autojump
             git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
             ~/.fzf/install
             source ~/.zshrc
@@ -142,21 +153,35 @@ function install(){
             sudo apt-get install -y ansible
         elif [ $sw == "albert" ]; then
             # https://github.com/albertlauncher/albert/issues/123
-            interactive_install
-            sudo add-apt-repository ppa:nilarimogard/webupd8
-            sudo apt-get update
-            sudo apt-get install -y albert
-            ExnDir="~/.local/share/albert/external"
-            if [ ! -d $ExnDir ];then
+            # interactive_install
+            # sudo add-apt-repository ppa:nilarimogard/webupd8
+            # sudo apt-get update
+            # sudo apt-get install -y albert
+
+            ExnDir="/home/$USER/.local/share/albert/external"
+            if [ ! -d "$ExnDir" ]; then
                 mkdir -p $ExnDir
             fi
-            cp $CONFIGDIR/org.albert.extension.external.switchapp.py $ExnDir
+            cp $CONFIGDIR/org.albert.extension.external.switchapp.py $ExnDir/
+            echo_tip "Now Please configure your albert: "
+            echo_tip "  Startup: set Albert auto-startup;"
+            echo_tip "  General: set Hotkey (we use Shift+Space);"
+            echo_tip "  Extensions: add External extensions."
         else
             sudo apt-get install -y $sw
         fi
     done
 }
 
-# install "${first_sws[*]}"
-# install "${next_sws[*]}"
-# install "${option_sws[*]}"
+if [ $1 == "init" ];then
+    install "${first_sws[*]}"
+elif [ $1 == "base" ]; then
+    install "${next_sws[*]}"
+elif [ $1 == "option" ]; then
+    install "${option_sws[*]}"
+elif [ $1 == "single" ]; then
+    single=($2)
+    install "${single[*]}"
+else
+    usage
+fi
