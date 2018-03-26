@@ -16,7 +16,7 @@ EMACS_VER=24.5
 ERLANG_VER=19.3
 GOVERSION=1.9.5
 
-first_sws=(git
+init_sws=(git
            vim
            terminator
            trash-cli
@@ -24,7 +24,7 @@ first_sws=(git
            zsh
            shadowsocks)
 
-next_sws=(tree
+base_sws=(tree
           ssh
           openssl
           openssl-client
@@ -45,8 +45,8 @@ option_sws=(emacs
 
 function usage() {
     echo "usage: "
-    echo "     install-ubuntu.sh init                 : install initial software in first_sws."
-    echo "     install-ubuntu.sh base                 : install basic software in next_sws."
+    echo "     install-ubuntu.sh init                 : install initial software in init_sws."
+    echo "     install-ubuntu.sh base                 : install basic software in base_sws."
     echo "     install-ubuntu.sh option               : install optional software in option_sws."
     echo "     install-ubuntu.sh single SOFTWARE_NAME : install single software."
 }
@@ -174,9 +174,9 @@ function install(){
 }
 
 if [ $1 == "init" ];then
-    install "${first_sws[*]}"
+    install "${init_sws[*]}"
 elif [ $1 == "base" ]; then
-    install "${next_sws[*]}"
+    install "${base_sws[*]}"
 elif [ $1 == "option" ]; then
     install "${option_sws[*]}"
 elif [ $1 == "single" ]; then

@@ -12,14 +12,20 @@ include:
   polipo
 #+END_SRC
 
-** install ubuntu 
-   Firstly, uncomment the softwares you want to install in $sws. then run ubuntu-install.sh.
+** install ubuntu
 
-   some installations needs enter interactively.
+   #+BEGIN_SRC text
+    usage:
+         install-ubuntu.sh init                 : install initial software in init_sws.
+         install-ubuntu.sh base                 : install basic software in base_sws.
+         install-ubuntu.sh option               : install optional software in option_sws.
+         install-ubuntu.sh single SOFTWARE_NAME : install single software.
+   #+END_SRC
 
-** link config files 
 
-link terminator config, .emacs.d, .zshrc. 
+** link config files
+
+link terminator config, .emacs.d, .zshrc.
 #+BEGIN_SRC shell
 ./link_configs.sh
 #+END_SRC
@@ -65,13 +71,13 @@ link terminator config, .emacs.d, .zshrc.
 *** GUI不能输入中文
 
     refer to http://wangzhe3224.github.io/emacs/2015/08/31/fcitx-emacs.html
-    
+
     - 确保安装zh_CN.UTF-8库
       #+BEGIN_SRC shell
         locale -a
       #+END_SRC
       看是否有zh_CN.utf8，如果没有要安装。
-      
+
       安装方法：
       #+BEGIN_SRC shell
         sudo apt-get install -y language-pack-zh-hans
@@ -81,11 +87,10 @@ link terminator config, .emacs.d, .zshrc.
       #+BEGIN_SRC text
         export LC_CTYPE=zh_CN.UTF-8
       #+END_SRC
- 
-      
+
+
     - 在/usr/local/share/application/emacs.desktop中修改
 
       #+BEGIN_SRC text
         Exec=env LC_CType=zh_CN.UTF-8 emacs %F
       #+END_SRC
-
