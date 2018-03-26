@@ -33,7 +33,6 @@ base_sws=(tree
           curl
           espeak
           shutter
-          albert
           calibre
           graphviz
           inkscape)
@@ -151,22 +150,6 @@ function install(){
             sudo apt-add-repository ppa:ansible/ansible
             sudo apt-get update
             sudo apt-get install -y ansible
-        elif [ $sw == "albert" ]; then
-            # https://github.com/albertlauncher/albert/issues/123
-            interactive_install
-            sudo add-apt-repository ppa:nilarimogard/webupd8
-            sudo apt-get update
-            sudo apt-get install -y albert
-
-            ExnDir="/home/$USER/.local/share/albert/external"
-            if [ ! -d "$ExnDir" ]; then
-                mkdir -p $ExnDir
-            fi
-            cp $CONFIGDIR/org.albert.extension.external.switchapp.py $ExnDir/
-            echo_tip "Now Please configure your albert: "
-            echo_tip "  Startup: set Albert auto-startup;"
-            echo_tip "  General: set Hotkey (we use Shift+Space);"
-            echo_tip "  Extensions: add External extensions."
         else
             sudo apt-get install -y $sw
         fi
