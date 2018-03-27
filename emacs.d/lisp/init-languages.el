@@ -58,6 +58,9 @@
     (add-hook 'c-mode-hook (lambda () (c-set-style "bsd")))
     (add-hook 'java-mode-hook (lambda () (c-set-style "bsd")))
     (setq tab-width 4)
+    (setq default-tab-width 4)
+    (setq c-default-style "linux")
+    (setq-default indent-tabs-mode nil)
     (setq c-basic-offset 4)))
 
 (require 'company-c-headers)
