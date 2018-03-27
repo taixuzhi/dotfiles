@@ -111,7 +111,7 @@ alias pinstall="sudo pip install"
 alias rm="trash"
 alias pdf="zathura"
 alias ot="nautilus"
-
+alias cm="catkin_make"
 ######### git flow #################################
 alias gfinit="git flow init"
 alias gffstart="git flow feature start" 
