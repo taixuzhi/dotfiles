@@ -128,7 +128,12 @@ alias say="espeak"
 #mkdir and cd
 function mkcd() { mkdir -p "$@" && cd "$_"; }
 function seddir() { sed -i "s/$1/$2/g" `grep $1 -rl ./` }
-
+function ginit() {
+  echo "[user]" >> .git/config
+  echo "     name  = lixuancong" >> .git/config
+  echo "     email = clare@eaibot.com" >> .git/config
+  echo "GPATH\nGRTAGS\nGTAGS" >> .gitignore
+}
 export GTAGSCONF=/usr/local/share/gtags/gtags.conf
 export GTAGSLABEL=ctags gtags
 
