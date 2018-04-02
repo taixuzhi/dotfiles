@@ -99,6 +99,7 @@ alias gbr="git branch -vv"
 alias gcl="git clone"
 alias gps="git push"
 alias gpl="git pull"
+alias gplumr="git pull upstream master --rebase"
 alias gcm="git commit -m"
 alias gdf="git diff"
 alias glg="git log --graph"
@@ -111,7 +112,6 @@ alias pinstall="sudo pip install"
 alias rm="trash"
 alias pdf="zathura"
 alias ot="nautilus"
-alias cm="catkin_make"
 ######### git flow #################################
 alias gfinit="git flow init"
 alias gffstart="git flow feature start" 
@@ -133,6 +133,9 @@ function ginit() {
   echo "     name  = lixuancong" >> .git/config
   echo "     email = clare@eaibot.com" >> .git/config
   echo "GPATH\nGRTAGS\nGTAGS" >> .gitignore
+}
+function cm() {
+  cd /home/$USER/catkin_ws && catkin_make
 }
 export GTAGSCONF=/usr/local/share/gtags/gtags.conf
 export GTAGSLABEL=ctags gtags
