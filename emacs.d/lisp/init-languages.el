@@ -462,48 +462,37 @@
                                               my:skeleton-namespace-decl-post))
                                 )))
                  '(random t)
-                 '(setq my:skeleton-include-guard
-                        (upcase
-                          (format "INCLUDE_GUARD_UUID_%04x%04x_%04x_4%03x_%04x_%06x%06x"
-                                  (random (expt 16 4))
-                                  (random (expt 16 4))
-                                  (random (expt 16 4))
-                                  (random (expt 16 3))
-                                  (+ (random (expt 2 14)) (expt 2 5))
-                                  (random (expt 16 6))
-                                  (random (expt 16 6)))))
-                 "/**" n
-                 "* @file   " my:skeleton-file-name > n
-                 "* @brief  " my:skeleton-description > n
-                 "*" > n
+                 "/*********************************************************************************" n
+                 "* Copyright (C) 2018, EAIBOT team" > n
                  "* @date   Created       : " (format-time-string "%Y-%m-%d %H:%M:%S") > n
                  "*         Last Modified :" > n
                  "* @author " my:skeleton-author " <" my:skeleton-mail-address ">" > n
+                 "*********************************************************************************/" n
+                 n
+                 "/**" > n
+                 "* @file   " my:skeleton-file-name > n
+                 "* @brief  " my:skeleton-description > n
                  "*" > n
-                 "*    (C) " (format-time-string "%Y") " " my:skeleton-author > n
+                 "*" > n
                  "*/" > n
                  n
-                 "#ifndef " my:skeleton-include-guard n
-                 "#define " my:skeleton-include-guard n
+                 "#ifndef XXX" > n
+                 "#define XXX"
                  my:skeleton-include n
                  my:skeleton-namespace-decl n
                  n
                  "class " my:skeleton-namespace-class my:skeleton-inheritance " {" n
-                 "public:" > n
+                 " public:" > n
                  my:skeleton-class-name "();" n
-                 "virtual ~" my:skeleton-class-name "();" n
+                 "~" my:skeleton-class-name "();" n
                  n
-                 my:skeleton-class-name "(const " my:skeleton-class-name "& rhs);" n
-                 my:skeleton-class-name "& operator=(const " my:skeleton-class-name "& rhs);" n
+                 " protected:" > n
                  n
-                 "protected:" > n
                  n
-                 "private:" > n
-                 n
-                 "ClassDef(" my:skeleton-class-name ",1) // " my:skeleton-description n
+                 " private:" > n
                  "};" > n
                  n
-                 "#endif // " my:skeleton-include-guard n
+                 "#endif // XXX"
                  '(delete-trailing-whitespace)
                  )
                 )
