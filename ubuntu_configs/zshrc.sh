@@ -135,7 +135,8 @@ function ginit() {
   echo "GPATH\nGRTAGS\nGTAGS" >> .gitignore
 }
 function cm() {
-  cd /home/$USER/catkin_ws && catkin_make
+  nowdir=$PWD
+  cd /home/$USER/catkin_ws && catkin_make && cd $nowdir
 }
 export GTAGSCONF=/usr/local/share/gtags/gtags.conf
 export GTAGSLABEL=ctags gtags
