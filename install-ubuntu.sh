@@ -26,8 +26,8 @@ init_sws=(terminator
 base_sws=(tree
           ssh
           openssl
-          openssl-client
-          openssl-server
+          openssh-client
+          openssh-server
           silversearcher-ag
           curl
           espeak
