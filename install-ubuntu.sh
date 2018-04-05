@@ -59,6 +59,14 @@ function interactive_install() {
     echo_tip "Please Note the interactive message>>>>> "
 }
 
+function install_deps() {
+    for dep in $@
+    do
+    	echo "====> dep: $dep"
+	sudo apt-get install -y $dep
+    done
+}
+
 function install(){
     sws=$1
     sudo apt-get update
@@ -100,10 +108,10 @@ function install(){
             ~/.fzf/install
             source ~/.zshrc
         elif [ $sw == "emacs" ];then
-            sudo apt-get install -y build-essential texinfo libx11-dev libxpm-dev \
-                 libgif-dev libxaw7-dev libjpeg-dev libpng12-dev libtiff5-dev libncurses5-dev xsel magit
             cd ${SWDIR} && tar xvf emacs-${EMACS_VER}.tar.gz && cd emacs-${EMACS_VER} && ./configure && make && sudo make install
             sudo apt-get install -y exuberant-ctags
+            install_deps build-essential texinfo libx11-dev libxpm-dev \
+                 libgif-dev libxaw7-dev libjpeg-dev libpng12-dev libtiff5-dev libncurses5-dev magit xsel
             cd ${SWDIR} && tar xvf global-6.5.7.tar.gz && cd global-6.5.7 && ./configure && make && sudo make install
             # echo "export GTAGSCONF=/usr/local/share/gtags/gtags.conf" >> ~/.zshrc
             # echo "export GTAGSLABEL=ctags gtags" >> ~/.zshrc
