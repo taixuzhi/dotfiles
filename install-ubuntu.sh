@@ -16,13 +16,12 @@ EMACS_VER=24.5
 ERLANG_VER=19.3
 GOVERSION=1.9.5
 
-init_sws=(git
-           vim
-           terminator
-           trash-cli
-           sougou
-           zsh
-           shadowsocks)
+init_sws=(terminator
+          #sougou
+	  shadowsocks
+	  vim
+          trash-cli
+          zsh)
 
 base_sws=(tree
           ssh
@@ -82,18 +81,22 @@ function install(){
             cd ${SWDIR} && wget "http://pinyin.sogou.com/linux/download.php?f=linux&bit=64" -O "sougou_64.deb"
             sudo dpkg -i sougou_64.deb
         elif [ $sw == "zsh" ];then
-            cd /home/$USER
             if [ ! -d "/home/$USER/.oh-my-zsh" ];then
                 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
             fi
             sudo apt-get install -y zsh
             chsh -s /bin/zsh
-            git clone https://github.com/joelthelion/autojump.git
-            cd autojump && ./install.py
+
+            if [ ! -d "/home/$USER/autojump" ];then
+            	git clone https://github.com/joelthelion/autojump.git ~/autojump
+	    fi
+            cd ~/autojump && ./install.py
             # echo "[[ -s /home/${USER}/.autojump/etc/profile.d/autojump.sh ]] && source /home/${USER}/.autojump/etc/profile.d/autojump.sh" >> ~/.zshrc
-            echo "autoload -U compinit && compinit -u"
-            rm -rf /home/$USER/autojump
-            git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+            rm -rf ~/autojump
+
+            if [ ! -d "/home/$USER/.fzf" ];then
+            	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+            fi
             ~/.fzf/install
             source ~/.zshrc
         elif [ $sw == "emacs" ];then
