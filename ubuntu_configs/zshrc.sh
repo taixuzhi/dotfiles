@@ -165,5 +165,5 @@ export GOPATH=/home/${USER}/gitlab/go
 export PATH=$PATH:/usr/local/go/bin:/home/${USER}/gitlab/go/bin
 
 export ROS_WORKSPACE=~/catkin_ws/src 
-source /opt/ros/kinetic/setup.zsh
-source ~/catkin_ws/devel/setup.zsh
+[ -f /opt/ros/kinetic/setup.zsh ] && source /opt/ros/kinetic/setup.zsh
+[ -f ~/catkin_ws/devel/setup.zsh ] && source ~/catkin_ws/devel/setup.zsh
