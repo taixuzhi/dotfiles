@@ -40,3 +40,12 @@ echo ">>>> unlink and link ~/.gitconfig"
 SRC_TERM=${CONF_DIR}/gitconfig
 DIST_TERM=${HOME}/.gitconfig
 lnif $SRC_TERM $DIST_TERM
+
+
+# unlink and link vimrc 
+echo ">>>> unlink and link ~/.vimrc"
+SRC_TERM=${CONF_DIR}/vimrc
+DIST_TERM=${HOME}/.vimrc
+lnif $SRC_TERM $DIST_TERM
+
+

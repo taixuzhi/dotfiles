@@ -1,2 +1,5 @@
 set clipboard=unnamed  "yank and paste with the system clipboard"
 
+"显示行号
+set nu!
+
