@@ -89,6 +89,37 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #########################################################
 
+
+export GTAGSCONF=/usr/local/share/gtags/gtags.conf
+export GTAGSLABEL=ctags gtags
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export NVM_DIR="/home/${USER}/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+[[ -s /home/$USER/.autojump/etc/profile.d/autojump.sh ]] && source /home/$USER/.autojump/etc/profile.d/autojump.sh
+
+setxkbmap -option ctrl:swapcaps
+
+## use polipo for proxy, default port is 8123.
+alias proxy='export http_proxy=http://127.0.0.1:8123;export HTTPS_PROXY=$http_proxy;export HTTP_PROXY=$http_proxy;export FTP_PROXY=$http_proxy;export https_proxy=$http_proxy;export ftp_proxy=$http_proxy;'
+alias noproxy='unset http_proxy;unset HTTPS_PROXY;unset HTTP_PROXY;unset FTP_PROXY;unset https_proxy;unset ftp_proxy'
+
+# export JAVA_HOME=/usr/local/jdk1.8.0
+# export JRE_HOME=${JAVA_HOME}/jre
+# export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
+export PATH=${JAVA_HOME}/bin:$PATH
+export GTAGSCONF=/usr/local/share/gtags/gtags.conf
+export GTAGSLABEL=ctags gtags
+export GOROOT=/usr/local/go
+export GOPATH=/home/${USER}/gitlab/go
+export PATH=$PATH:/usr/local/go/bin:/home/${USER}/gitlab/go/bin
+
+export ROS_WORKSPACE=~/catkin_ws/src 
+[ -f /opt/ros/kinetic/setup.zsh ] && source /opt/ros/kinetic/setup.zsh
+[ -f ~/catkin_ws/devel/setup.zsh ] && source ~/catkin_ws/devel/setup.zsh
+
 #########################################################
 alias c="clear"
 # alias e="LC_CTYPE=zh_CN.UTF-8 emacs &"
@@ -131,32 +162,3 @@ function cm() {
   nowdir=$PWD
   cd /home/$USER/catkin_ws && catkin_make && cd $nowdir
 }
-export GTAGSCONF=/usr/local/share/gtags/gtags.conf
-export GTAGSLABEL=ctags gtags
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-export NVM_DIR="/home/${USER}/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-[[ -s /home/$USER/.autojump/etc/profile.d/autojump.sh ]] && source /home/$USER/.autojump/etc/profile.d/autojump.sh
-
-setxkbmap -option ctrl:swapcaps
-
-## use polipo for proxy, default port is 8123.
-alias proxy='export http_proxy=http://127.0.0.1:8123;export HTTPS_PROXY=$http_proxy;export HTTP_PROXY=$http_proxy;export FTP_PROXY=$http_proxy;export https_proxy=$http_proxy;export ftp_proxy=$http_proxy;'
-alias noproxy='unset http_proxy;unset HTTPS_PROXY;unset HTTP_PROXY;unset FTP_PROXY;unset https_proxy;unset ftp_proxy'
-
-# export JAVA_HOME=/usr/local/jdk1.8.0
-# export JRE_HOME=${JAVA_HOME}/jre
-# export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
-export PATH=${JAVA_HOME}/bin:$PATH
-export GTAGSCONF=/usr/local/share/gtags/gtags.conf
-export GTAGSLABEL=ctags gtags
-export GOROOT=/usr/local/go
-export GOPATH=/home/${USER}/gitlab/go
-export PATH=$PATH:/usr/local/go/bin:/home/${USER}/gitlab/go/bin
-
-export ROS_WORKSPACE=~/catkin_ws/src 
-[ -f /opt/ros/kinetic/setup.zsh ] && source /opt/ros/kinetic/setup.zsh
-[ -f ~/catkin_ws/devel/setup.zsh ] && source ~/catkin_ws/devel/setup.zsh
