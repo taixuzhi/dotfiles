@@ -46,8 +46,8 @@
              :diminish eldoc-mode
              :init  (setq eldoc-idle-delay 0.1))
 
-(use-package cmake-mode 
-             :defer t)
+;; (use-package cmake-mode 
+;;              :defer t)
 
 ;;--------------------------------------------------------------
 ;; cc-mode

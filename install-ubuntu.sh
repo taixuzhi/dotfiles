@@ -13,7 +13,7 @@ SWDIR=${THISDIR}/ubuntu_pkgs
 CONFIGDIR=${THISDIR}/ubuntu_configs
 
 EMACS_VER=24.5
-ERLANG_VER=19.3
+ERLANG_VER=20.3
 GOVERSION=1.9.5
 
 init_sws=(terminator
@@ -110,24 +110,25 @@ function install(){
         elif [ $sw == "emacs" ];then
             cd ${SWDIR} && tar xvf emacs-${EMACS_VER}.tar.gz && cd emacs-${EMACS_VER} && ./configure && make && sudo make install
             sudo apt-get install -y exuberant-ctags
-            install_deps build-essential texinfo libx11-dev libxpm-dev \
-                 libgif-dev libxaw7-dev libjpeg-dev libpng12-dev libtiff5-dev libncurses5-dev magit xsel
+            install_deps build-essential texinfo libx11-dev libxpm-dev libgif-dev 
+	    install_deps libxaw7-dev libjpeg-dev libpng12-dev libtiff5-dev libncurses5-dev magit xsel
+            cd ${SWDIR} && wget ftp://ftp.gnu.org/pub/gnu/global/global-6.5.7.tar.gz 
             cd ${SWDIR} && tar xvf global-6.5.7.tar.gz && cd global-6.5.7 && ./configure && make && sudo make install
             # echo "export GTAGSCONF=/usr/local/share/gtags/gtags.conf" >> ~/.zshrc
             # echo "export GTAGSLABEL=ctags gtags" >> ~/.zshrc
         elif [ $sw == "erlang" ]; then
             cd ${SWDIR}
-            wget http://erlang.org/download/otp_src_$ERLANG_VER.tar.gz
-            wget http://erlang.org/download/otp_doc_man_$ERLANG_VER.tar.gz
+            # wget http://erlang.org/download/otp_src_$ERLANG_VER.tar.gz
+            # wget http://erlang.org/download/otp_doc_man_$ERLANG_VER.tar.gz
             tar xvf otp_src_$ERLANG_VER.tar.gz
-            sudo apt-get install -y build-essential autoconf m4 libncurses5-dev libwxgtk2.8-dev \
+            install_deps build-essential autoconf m4 libncurses5-dev \
                  libgl1-mesa-dev libglu1-mesa-dev libpng3 libssh-dev unixodbc-dev
             cd otp_src_$ERLANG_VER && ./configure && make && sudo make install
             cd ${SWDIR}
             tar xvf otp_doc_man_$ERLANG_VER.tar.gz
-            sudo cp -r man /usr/local/lib/erlang/
+            # sudo cp -r man /usr/local/lib/erlang/
 
-            sudo apt-get install -y rlwrap  # 可以用以erlang的历史命令记录。
+            # sudo apt-get install -y rlwrap  # 可以用以erlang的历史命令记录。
             # 在zshrc中添加：alias erl='/usr/bin/rlwrap -a erl'
         elif [ $sw == "golang" ]; then
             GOTO=/usr/local

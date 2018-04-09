@@ -112,13 +112,6 @@ alias pinstall="sudo pip install"
 alias rm="trash"
 alias pdf="zathura"
 alias ot="nautilus"
-######### git flow #################################
-alias gfinit="git flow init"
-alias gffstart="git flow feature start" 
-alias gfffinish="git flow feature finish" 
-alias gffpub="git flow feature publish"
-
-# alias erl='/usr/bin/rlwrap -a erl'
 
 alias szsh="source ~/.zshrc"
 alias dl="cd ~/Downloads"
