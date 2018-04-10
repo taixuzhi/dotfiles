@@ -37,6 +37,7 @@ base_sws=(tree
           inkscape)
 
 option_sws=(emacs
+	        xmind
             erlang
             golang
             ansible)
@@ -162,6 +163,10 @@ function install(){
             sudo apt-add-repository ppa:ansible/ansible
             sudo apt-get update
             sudo apt-get install -y ansible
+        elif [ $sw == "xmind" ]; then
+            # download xmind package in $SWDIR
+            cd ${SWDIR} && unzip xmind-8-update7-linux.zip -d /opt/xmind 
+            cd /opt/xmind && sudo ./setup.sh && sudo chmod 777 -R /opt/xmind/*
         else
             sudo apt-get install -y $sw
         fi
