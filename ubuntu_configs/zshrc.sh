@@ -149,6 +149,7 @@ alias dl="cd ~/Downloads"
 alias dc="cd ~/Documents"
 alias dt="cd ~/Desktop"
 alias say="espeak"
+alias mj="make -j4"
 #mkdir and cd
 function mkcd() { mkdir -p "$@" && cd "$_"; }
 function seddir() { sed -i "s/$1/$2/g" `grep $1 -rl ./` }
