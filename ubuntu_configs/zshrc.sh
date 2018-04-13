@@ -141,7 +141,6 @@ alias aptinstall="sudo apt-get install "
 alias ninstall="sudo npm install -g"
 alias pinstall="sudo pip install"
 alias rm="trash"
-alias pdf="zathura"
 alias ot="nautilus"
 
 alias szsh="source ~/.zshrc"
@@ -162,4 +161,8 @@ function ginit() {
 function cm() {
   nowdir=$PWD
   cd /home/$USER/catkin_ws && catkin_make && cd $nowdir
+}
+
+function pdf() {
+    zathura $1 & 
 }

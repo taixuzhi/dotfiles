@@ -18,8 +18,8 @@ GOVERSION=1.9.5
 
 init_sws=(terminator
           #sougou
-	  shadowsocks
-	  vim
+          shadowsocks
+          vim
           trash-cli
           zsh)
 
@@ -32,6 +32,7 @@ base_sws=(tree
           curl
           espeak
           shutter
+          zathura
           calibre
           graphviz
           inkscape)
