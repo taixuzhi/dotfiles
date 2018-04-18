@@ -64,13 +64,12 @@
 (use-package cc-mode
   :config
   (progn
-    (add-hook 'c-mode-hook (lambda () (c-set-style "bsd")))
-    (add-hook 'java-mode-hook (lambda () (c-set-style "bsd")))
-    (setq tab-width 4)
-    (setq default-tab-width 4)
-    (setq c-default-style "linux")
+    (add-hook 'c-mode-hook (lambda () (c-set-style "google")))
+    (add-hook 'c++-mode-hook (lambda () (c-set-style "google")))
+    (setq tab-width 2)
+    (setq c-default-style "google")
     (setq-default indent-tabs-mode nil)
-    (setq c-basic-offset 4)))
+    (setq c-basic-offset 2)))
 (require 'google-c-style)
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
