@@ -61,6 +61,10 @@
 ;;--------------------------------------------------------------
 ;; cc-mode
 ;;--------------------------------------------------------------
+(use-package company-c-headers
+  :init
+  (add-to-list 'company-backends 'company-c-headers))
+
 (use-package cc-mode
   :config
   (progn
@@ -70,17 +74,6 @@
     (setq c-default-style "google")
     (setq-default indent-tabs-mode nil)
     (setq c-basic-offset 2)))
-(require 'google-c-style)
-(add-hook 'c-mode-common-hook 'google-set-c-style)
-(add-hook 'c-mode-common-hook 'google-make-newline-indent)
-(add-hook 'c++mode-common-hook 'google-set-c-style)
-(add-hook 'c++mode-common-hook 'google-make-newline-indent)
-
-(require 'company-c-headers)
-(use-package company-c-headers
-  :init
-  (add-to-list 'company-backends 'company-c-headers)
-  (add-to-list 'company-c-headers-path-system "/usr/include/c++/5.4.0/"))
 
 ;;---------------------------------------------------------------
 ;; Erlang
