@@ -61,9 +61,12 @@
 ;;--------------------------------------------------------------
 ;; cc-mode
 ;;--------------------------------------------------------------
+(require 'company-c-headers)
 (use-package company-c-headers
   :init
-  (add-to-list 'company-backends 'company-c-headers))
+  (add-to-list 'company-backends 'company-c-headers)
+  (add-to-list 'company-c-headers-path-system "/usr/include/c++/5.4.0/"))
+
 (use-package google-c-style
   :init
   (add-hook 'c-mode-common-hook 'google-set-c-style)
