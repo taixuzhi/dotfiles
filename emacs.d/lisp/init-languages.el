@@ -64,6 +64,13 @@
 (use-package company-c-headers
   :init
   (add-to-list 'company-backends 'company-c-headers))
+(use-package google-c-style
+  :init
+  (add-hook 'c-mode-common-hook 'google-set-c-style)
+  (add-hook 'c++-mode-common-hook 'google-set-c-style)
+  (add-hook 'c-mode-common-hook 'google-make-newline-indent)
+  (add-hook 'c++-mode-common-hook 'google-make-newline-indent)
+)
 
 (use-package cc-mode
   :config
