@@ -78,10 +78,7 @@
 (use-package cc-mode
   :config
   (progn
-    (add-hook 'c-mode-hook (lambda () (c-set-style "google")))
-    (add-hook 'c++-mode-hook (lambda () (c-set-style "google")))
     (setq tab-width 2)
-    (setq c-default-style "google")
     (setq-default indent-tabs-mode nil)
     (setq c-basic-offset 2)))
 
