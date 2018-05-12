@@ -34,6 +34,7 @@
     "hs"  'helm-projectile-ag
     "hp" 'helm-projectile
     "hd" 'helm-dash-at-point
+    "i"  'wdired-change-to-wdired-mode
     "k"  'get-erl-man'
     "l"  'whitespace-mode       ;; Show invisible characters
     "nn" 'air-narrow-dwim       ;; Narrow to region and enter normal mode
