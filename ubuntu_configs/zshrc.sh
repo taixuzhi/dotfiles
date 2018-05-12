@@ -116,9 +116,9 @@ export GOROOT=/usr/local/go
 export GOPATH=/home/${USER}/gitlab/go
 export PATH=$PATH:/usr/local/go/bin:/home/${USER}/gitlab/go/bin
 
-export ROS_WORKSPACE=~/catkin_ws/src 
+export ROS_WORKSPACE=~/gitlab/catkin_ws/src 
 [ -f /opt/ros/kinetic/setup.zsh ] && source /opt/ros/kinetic/setup.zsh
-[ -f ~/catkin_ws/devel/setup.zsh ] && source ~/catkin_ws/devel/setup.zsh
+[ -f ~/gitlab/catkin_ws/devel/setup.zsh ] && source ~/gitlab/catkin_ws/devel/setup.zsh
 
 #########################################################
 alias c="clear"
@@ -160,7 +160,7 @@ function ginit() {
 }
 function cm() {
   nowdir=$PWD
-  cd /home/$USER/catkin_ws && catkin_make && cd $nowdir
+  cd /home/$USER/gitlab/catkin_ws && catkin_make -j4 && cd $nowdir
 }
 
 function pdf() {
