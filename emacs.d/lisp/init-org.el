@@ -61,7 +61,7 @@
     (setq op/personal-disqus-shortname "congleetea")
     (setq op/hashover-comments t)
     (setq op/theme-root-directory "~/.emacs.d/themes")
-    (setq op/theme 'org-page-one-column)
+    (setq op/theme 'org-page-theme-suodao)
     (setq op/highlight-render 'js)
     )
   )
