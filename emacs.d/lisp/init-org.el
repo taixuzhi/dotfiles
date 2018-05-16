@@ -11,24 +11,24 @@
              :ensure t
              :defer t
              )
-(setq org-plantuml-jar-path "~/.emacs.d/vendor/plantuml.jar")	
-(setq org-ditaa-jar-path "~/.emacs.d/vendor/ditaa0_9.jar")	
+(setq org-plantuml-jar-path (expand-file-name "~/.emacs.d/vendor/plantuml.jar"))
+(setq org-ditaa-jar-path (expand-file-name "~/.emacs.d/vendor/ditaa0_9.jar"))	
 (setq org-confirm-babel-evaluate nil)	
 (add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append)	
 	
 (require 'ob)	
 (require 'ob-plantuml)	
-	
 (org-babel-do-load-languages	
  'org-babel-load-languages	
  '(	
    (emacs-lisp . t)	
+   (plantuml . t)	
    (org . t)	
+   (shell . t)	
    (sh . t)	
    (C . t)	
    (python . t)	
    (awk . t)	
-   (plantuml . t)	
    (ditaa . t)	
    ))	
 	
@@ -49,14 +49,21 @@
                         htmlize-region))
 
 (require 'org-page)
-(setq op/repository-directory "~/gitlab/congleetea.github.io")
-(setq op/site-domain "https://congleetea.github.io")
-(setq op/personal-github-link "https://github.com/congleetea")
-(setq op/site-main-title "qingyuan")
-(setq op/site-sub-title "SubTitle")
-(setq op/personal-disqus-shortname "congleetea")
-(setq op/theme-root-directory "~/.emacs.d/themes/")
-(setq op/theme 'org-page-theme-weidaotong)
-(setq op/highlight-render 'js)
+(use-package org-page
+  :ensure t
+  :config
+  (progn
+    (setq op/repository-directory "~/gitlab/congleetea.github.io")
+    (setq op/site-domain "https://congleetea.github.io")
+    (setq op/personal-github-link "https://github.com/congleetea")
+    (setq op/site-main-title "清园索道")
+    (setq op/site-sub-title "吾将上下而求索")
+    (setq op/personal-disqus-shortname "congleetea")
+    (setq op/hashover-comments t)
+    (setq op/theme-root-directory "~/.emacs.d/themes")
+    (setq op/theme 'org-page-one-column)
+    (setq op/highlight-render 'js)
+    )
+  )
 
 (provide 'init-org)
