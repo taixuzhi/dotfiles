@@ -158,10 +158,16 @@ function ginit() {
   echo "     email = clare@eaibot.com" >> .git/config
   echo "GPATH\nGRTAGS\nGTAGS" >> .gitignore
 }
+
 function cm() {
   nowdir=$PWD
   cd /home/$USER/gitlab/catkin_ws && catkin_make -j4 && cd $nowdir
 }
+
+function gstyle() {
+  astyle --options=/home/$USER/gitlab/dotfiles/ubuntu_configs/astylerc --preserve-date $* 
+}
+
 
 function pdf() {
     zathura $1 & 

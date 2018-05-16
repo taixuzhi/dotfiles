@@ -1,0 +1,11 @@
+indent=spaces=2
+style=google
+max-code-length=120
+--indent-switches  
+--indent-col1-comments  
+--align-pointer=type  
+--break-blocks  
+--pad-oper  
+--pad-header  
+--convert-tabs  
+--suffix=none  
