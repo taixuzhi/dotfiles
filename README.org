@@ -74,6 +74,7 @@ link terminator config, .emacs.d, .zshrc, gitconfig, vimrc(TODO).
 
   helm: 模糊查找文件。
 
+  org有时候输出有问题时可能需要删除elc文件重试。
 
 *** GUI不能输入中文
 

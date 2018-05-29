@@ -1,4 +1,15 @@
+
 set clipboard=unnamed  "yank and paste with the system clipboard"
+set clipboard=unnamedplus
+
+" nomal mapping
+nmap s                       <Plug>(easymotion-s)
+"nmap t                       <Plug>(easymotion-s2)
+nmap <Leader>cp              :!xclip -i -selection clipboard % <CR><CR>
+
+" no listchars
+nmap <Leader>L               :set list!<CR>
+
 
 "显示行号
 set nu!

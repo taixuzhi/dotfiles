@@ -3,6 +3,7 @@
 ;; reffer to: http://www.zmonster.me/2015/07/15/org-mode-planning.html
 ;; reffer to: https://zhangda.wordpress.com/2016/02/15/configurations-for-beautifying-emacs-org-mode/
 
+(require 'org-page)
 (use-package org-evil :ensure t)
 (setq auto-mode-alist (cons '("\\.org$" . org-mode) auto-mode-alist))
 
@@ -24,7 +25,6 @@
    (emacs-lisp . t)	
    (plantuml . t)	
    (org . t)	
-   (shell . t)	
    (sh . t)	
    (C . t)	
    (python . t)	
@@ -48,7 +48,6 @@
                         htmlize-many-files-dired
                         htmlize-region))
 
-(require 'org-page)
 (use-package org-page
   :ensure t
   :config
