@@ -61,11 +61,14 @@
 ;;--------------------------------------------------------------
 ;; cc-mode
 ;;--------------------------------------------------------------
-(require 'company-c-headers)
-(use-package company-c-headers
-  :init
-  (add-to-list 'company-backends 'company-c-headers)
-  (add-to-list 'company-c-headers-path-system "/usr/include/c++/5.4.0/"))
+
+
+(use-package cc-mode
+  :config
+  (progn
+    (setq tab-width 2)
+    (setq-default indent-tabs-mode nil)
+    (setq c-basic-offset 2)))
 
 (use-package google-c-style
   :init
@@ -75,12 +78,11 @@
   (add-hook 'c++-mode-common-hook 'google-make-newline-indent)
 )
 
-(use-package cc-mode
-  :config
-  (progn
-    (setq tab-width 2)
-    (setq-default indent-tabs-mode nil)
-    (setq c-basic-offset 2)))
+(require 'company-c-headers)
+(use-package company-c-headers
+  :init
+  (add-to-list 'company-backends 'company-c-headers)
+  (add-to-list 'company-c-headers-path-system "/usr/include/c++/5.4.0/"))
 
 ;;---------------------------------------------------------------
 ;; Erlang
