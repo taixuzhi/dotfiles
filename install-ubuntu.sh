@@ -14,7 +14,7 @@ CONFIGDIR=${THISDIR}/ubuntu_configs
 
 EMACS_VER=24.5
 ERLANG_VER=20.3
-GOVERSION=1.9.5
+GOVERSION=1.10.3
 
 init_sws=(terminator
           #sougou
@@ -148,6 +148,9 @@ function install(){
             echo "export PATH=\$PATH:${GOROOT}/bin:${GOPATH}/bin" >> ~/.zshrc
             echo "GOPATH: $GOPATH"
             source ~/.zshrc
+            go get github.com/rogpeppe/godef
+            go get github.com/nsf/gocode
+	    go get -u golang.org/x/tools/cmd/goimports
         elif [ $sw == "shadowsocks" ]; then
             sudo apt-get install -y inkscape
             # instalation for shadowsocks in terminator
