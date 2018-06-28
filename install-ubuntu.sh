@@ -12,12 +12,12 @@ THISDIR=$( cd "$( dirname "$0")" && pwd )
 SWDIR=${THISDIR}/ubuntu_pkgs
 CONFIGDIR=${THISDIR}/ubuntu_configs
 
-EMACS_VER=24.5
+EMACS_VER=26.1
 ERLANG_VER=20.3
 GOVERSION=1.10.3
 
 init_sws=(terminator
-          #sougou
+          sougou
           shadowsocks
           vim
           trash-cli
@@ -38,7 +38,7 @@ base_sws=(tree
           inkscape)
 
 option_sws=(emacs
-	        xmind
+	    xmind
             erlang
             golang
             ansible)
@@ -157,7 +157,7 @@ function install(){
             # http://droidyue.com/blog/2016/04/04/set-shadowsocks-proxy-for-terminal/index.html
             sudo apt-get install -y python-pip
             sudo pip install --upgrade git+https://github.com/shadowsocks/shadowsocks.git@master
-	    cd ${SWDIR} && tar xvf libsodium.tar.gz && cd libsodium-stable && ./configure --prefix=/usr && sudo make install
+	    cd ${SWDIR} && tar xvf libsodium.tar.gz && cd libsodium-stable && ./configure --prefix=/usr && make && sudo make install
             sudo apt-get install -y polipo
             sudo cp ${CONFIGDIR}/polipo.conf /etc/polipo/config
             sudo service polipo stop
