@@ -139,7 +139,6 @@ alias gmg="git merge --no-ff"
 alias aptinstall="sudo apt-get install "
 alias ninstall="sudo npm install -g"
 alias pinstall="sudo pip install"
-alias rm="trash"
 alias ot="nautilus"
 
 alias szsh="source ~/.zshrc"
@@ -172,3 +171,4 @@ function pdf() {
     zathura $1 & 
 }
 
+alias rm="trash"

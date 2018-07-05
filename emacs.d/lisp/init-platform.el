@@ -93,6 +93,8 @@
 (setq interprogram-paste-function 'paste-with-Xclipboard)
 ;; ---------------------------- end clipboard -----------------------------
 
+;; fullscreen
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; ---------------------------- begin youdao ------------------------------ 
 (setq url-automatic-caching t)

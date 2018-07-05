@@ -1,0 +1,4 @@
+# name: cmake message 
+# key: msg 
+# --
+MESSAGE(STATUS $1)
