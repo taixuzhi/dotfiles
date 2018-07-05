@@ -31,6 +31,7 @@
     "f"  'helm-imenu            ;; Jump to function in buffer
     "g"  'magit-status
     "hb"  'fontify-and-browse    ;; HTML-ize the buffer and browse the result
+    "hc"  'projectile-invalidate-cache ;; refresh projectile.cache of a project.
     "hs"  'helm-projectile-ag
     "hp" 'helm-projectile
     "hd" 'helm-dash-at-point
