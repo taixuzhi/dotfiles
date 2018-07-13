@@ -12,7 +12,7 @@ THISDIR=$( cd "$( dirname "$0")" && pwd )
 SWDIR=${THISDIR}/ubuntu_pkgs
 CONFIGDIR=${THISDIR}/ubuntu_configs
 
-EMACS_VER=26.1
+EMACS_VER=25.2
 ERLANG_VER=20.3
 GOVERSION=1.10.3
 
@@ -113,7 +113,7 @@ function install(){
             cd ${SWDIR} && tar xvf emacs-${EMACS_VER}.tar.gz && cd emacs-${EMACS_VER} && ./configure && make && sudo make install
             sudo apt-get install -y exuberant-ctags
             install_deps build-essential texinfo libx11-dev libxpm-dev libgif-dev 
-	    install_deps libxaw7-dev libjpeg-dev libpng12-dev libtiff5-dev libncurses5-dev magit xsel
+	    install_deps libxaw7-dev libjpeg-dev libpng12-dev libtiff5-dev libncurses5-dev xsel
             cd ${SWDIR} && wget ftp://ftp.gnu.org/pub/gnu/global/global-6.5.7.tar.gz 
             cd ${SWDIR} && tar xvf global-6.5.7.tar.gz && cd global-6.5.7 && ./configure && make && sudo make install
             # echo "export GTAGSCONF=/usr/local/share/gtags/gtags.conf" >> ~/.zshrc
