@@ -25,7 +25,7 @@
    (emacs-lisp . t)	
    (plantuml . t)	
    (org . t)	
-   (shell . t)	
+   (sh . t)	
    (C . t)	
    (python . t)	
    (awk . t)	
