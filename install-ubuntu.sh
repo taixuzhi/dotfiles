@@ -171,6 +171,11 @@ function install(){
             # download xmind package in $SWDIR
             cd ${SWDIR} && unzip xmind-8-update7-linux.zip -d /opt/xmind 
             cd /opt/xmind && sudo ./setup.sh && sudo chmod 777 -R /opt/xmind/*
+        elif [ $sw == "pdfeditor" ]; then
+            if [ ! -f ${SWDIR}/master-pdf-editor-4.0.10_qt5.amd64.deb ]; then
+                cd ${SWDIR} && wget http://get.code-industry.net/public/master-pdf-editor-4.0.10_qt5.amd64.deb
+            fi
+            cd ${SWDIR} && sudo dpkg -i master-pdf-editor-4.0.10_qt5.amd64.deb
         else
             sudo apt-get install -y $sw
         fi
