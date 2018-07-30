@@ -21,6 +21,7 @@ init_sws=(terminator
           shadowsocks
           vim
           trash-cli
+          valgrind
           zsh)
 
 base_sws=(tree
