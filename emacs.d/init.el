@@ -58,3 +58,17 @@
 
 
 (provide 'init)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (org-evil yasnippet yaml-mode which-key web-mode use-package uimage telephone-line systemd swiper rainbow-mode rainbow-delimiters racket-mode paredit org-page neotree multiple-cursors monokai-theme monitor markdown-mode magit lua-mode js2-mode hippie-exp-ext highlight-symbol helm-projectile helm-ag google-c-style go-eldoc git-gutter geiser flycheck evil-surround evil-leader evil-indent-textobject dockerfile-mode docker dired-k diminish company-go company-c-headers comment-dwim-2 color-identifiers-mode cmake-mode bpr avy anzu ansible ag ac-slime))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
