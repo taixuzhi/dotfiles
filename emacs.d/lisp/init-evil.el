@@ -1,6 +1,10 @@
 ;;; init-evil.el -- My evil mode configuration.
 ;;; Commentary:
 ;;; Code:
+
+;;; evil-viaualstar: on string world, hit * to search that selection forward, or # to search that selection backward.
+(use-package evil-visualstar :config (global-evil-visualstar-mode t))  
+
 (defun air--config-evil-leader ()
   "Configure evil leader mode."
   (evil-leader/set-leader ",")

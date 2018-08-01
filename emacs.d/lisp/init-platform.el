@@ -106,6 +106,7 @@
 (use-package telephone-line      :ensure t :config (telephone-line-mode 1))
 
 (use-package monokai-theme       :ensure t :defer t)
+
 (load-theme 'monokai t)
 ;; (use-package gotham-theme        :ensure t :defer t)
 ;; (load-theme 'gotham t)
