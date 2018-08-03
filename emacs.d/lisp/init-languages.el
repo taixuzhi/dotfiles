@@ -203,40 +203,8 @@
  (add-hook 'before-save-hook 'gofmt-before-save))
 
 ;;----------------------------------------------------------------------------
-;; es6
-;;----------------------------------------------------------------------------
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-(add-to-list 'auto-mode-alist '("\\.js[x]?\\'" . web-mode))
-(use-package js2-mode
-             :config (setq js2-basic-offset 2))
-
-;; force web-mode’s content type as jsx for .js and .jsx files
-(use-package web-mode :ensure t)
-
-(defun my-web-mode-hook ()
-  "Hooks for Web mode. Adjust indents"
-  (setq web-mode-enable-current-column-highlight t)
-  (setq web-mode-markup-indent-offset 2)
-  (setq web-mode-css-indent-offset 2)
-  (setq web-mode-code-indent-offset 2))
-
-(add-hook 'web-mode-hook  'my-web-mode-hook)
-
-(setq web-mode-content-types-alist
-  '(("jsx" . "\\.js[x]?\\'")))
-
-(defadvice web-mode-highlight-part (around tweak-jsx activate)
-  (if (equal web-mode-content-type "jsx")
-    (let ((web-mode-enable-part-face nil))
-      ad-do-it)
-    ad-do-it))
-
-;;----------------------------------------------------------------------------
 ;; other programming languages
 ;;----------------------------------------------------------------------------
-;; (use-package crontab-mode
-;;              :defer t
-;;              :mode "\\.?cron\\(tab\\)?\\'")
 (use-package markdown-mode
              :defer t
              :config
@@ -258,55 +226,6 @@
              :defer t
              :mode ("\\.yml$" . yaml-mode))
 
-(use-package ansible
-             :defer t
-             :init (add-hook 'yaml-mode-hook '(lambda () (ansible 1))))
-
-
-;;----------------------------------------------------------------------------
-;; racket
-;;----------------------------------------------------------------------------
-(use-package racket-mode
-             :mode ("\\.rkt\\'" . racket-mode)
-             :interpreter ("racket" . racket-mode)
-             :config
-             (define-abbrev-table 'racket-mode-abbrev-table
-                                  '(("lambda" "λ" nil 1)))
-             (setq default-abbrev-mode t)
-             :ensure t)
-
-(mapc (lambda (pr) (put (car pr) 'racket-indent-function (cdr pr)))
-      '((conde . 0)
-        (fresh . 1)
-        (run . 1)
-        (run* . 1)
-        (run . 2)))
-
-(use-package geiser
-             :config
-             (add-hook 'racket-mode-hook (lambda () (geiser-mode t)))
-             :ensure t)
-(setq geiser-active-implementations '(racket))
-(add-hook 'racket-mode-hook      #'racket-unicode-input-method-enable)
-(add-hook 'racket-repl-mode-hook #'racket-unicode-input-method-enable)
-
-
-;;----------------------------------------------------------------------------
-;; docker
-;;----------------------------------------------------------------------------
-;; docker-mode
-(use-package docker
-             :ensure t
-             :config (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
-(use-package dockerfile-mode
-             :ensure t
-             :mode "Dockerfile.*\\'")
-
-(add-hook 'prog-common-hook
-          (lambda ()
-            (font-lock-add-keywords nil
-                                    '(("\\<\\(FIX\\|FIXME\\|TODO\\|BUG\\|HACK\\):" 1 font-lock-warning-face t)))))
-
 ;;----------------------------------------------------------------------------
 ;; auto insert
 ;;----------------------------------------------------------------------------
@@ -316,44 +235,6 @@
 (setq auto-insert t)
 (setq auto-insert-query t)
 (add-hook 'find-file-hooks 'auto-insert)
-;(setq auto-insert-directory "~/.emacs.d/vendor/auto-insert/")
-(setq auto-insert-alist
-      (append
-       '(
-         (("\\\\.el\\\\'" . "Emacs Lisp header")
-          "Short description: "
-          ";;; " (file-name-nondirectory (buffer-file-name)) " --- " str "
-;; Copyright (C) " (substring (current-time-string) -4) " by Xuancong Lee " "
-;; Author: Xuancong Lee"
-'(end-of-line 1) " <" (user-login-name) ?@ "congleetea@gmail.com>
-(defconst "
-(substring (file-name-nondirectory (buffer-file-name)) 0 -3)
-"-version \\"$Id: "
-(file-name-nondirectory (buffer-file-name))
-",v 1.1 "
-'(require 'time-stamp)
-(concat (time-stamp-yyyy/mm/dd) " " (time-stamp-hh:mm:ss))
-" matsu Exp matsu $\\")" "
-;; Keywords: "
- '(require 'finder)
- ;;'(setq v1 (apply 'vector (mapcar 'car finder-known-keywords)))
- '(setq v1 (mapcar (lambda (x) (list (symbol-name (car x))))
-                   finder-known-keywords)
-        v2 (mapconcat (lambda (x) (format "%10.0s:  %s" (car x) (cdr x)))
-           finder-known-keywords
-           "\\n"))
- ((let ((minibuffer-help-form v2))
-    (completing-read "Keyword, C-h: " v1 nil t))
-    str ", ") & -2 "
-;;
-;; This program is free software; you can redistribute it and/or modify
- (中略)
-;;; Commentary:
-;; " _ "
-;;; Code:
-;;; " (file-name-nondirectory (buffer-file-name)) " ends here"))
-       auto-insert-alist))
-
 (setq auto-insert-alist
       (append '(
                 (("\\.py$" . "python template")
@@ -376,142 +257,6 @@
                  "\n"
                  _
                  )) auto-insert-alist))
-
-(setq auto-insert-alist
-      (append '(
-                (("\\.erl$" . "erlang header")
-                 nil
-                 "%%%--------------------------------------------------------------------\n"
-                 "%%% @Copyright (c) 2016-2017 MOLMC Enterprise, Inc. (http://intoyun.com)\n"
-                 "%%% @Author: Xuancong Lee[congleetea] <congleetea@gmail.com>\n"
-                 "%%%\n"
-                 "%%% @date "(format-time-string "%A, %B %e %Y" (current-time)) "\n"
-                 "%%%--------------------------------------------------------------------\n"
-                 "\n"
-                 "-module("(file-name-sans-extension (file-name-nondirectory buffer-file-name))").\n"
-                 "\n"
-                 _
-                 ))
-              auto-insert-alist))
-
-(setq auto-insert-alist
-      (append '(
-                (("\\.go$" . "golang header")
-                 nil
-                 "///--------------------------------------------------------------------\n"
-                 "/// Copyright (c) 2016-2017 MOLMC Enterprise, Inc. (http://intoyun.com)\n"
-                 "/// Author: Xuancong Lee[congleetea] <congleetea@gmail.com>\n"
-                 "///\n"
-                 "/// Date "(format-time-string "%A, %B %e %Y" (current-time)) "\n"
-                 "///--------------------------------------------------------------------\n"
-                 "package "
-                 _
-                 ))
-              auto-insert-alist))
-
-(setq auto-insert-alist
-      (append '(
-                (("\\.h\\'" . "C/C++ header")
-                 nil
-                 '(c++-mode)
-                 '(setq my:skeleton-author (identity user-full-name))
-                 '(setq my:skeleton-mail-address (identity user-mail-address))
-                 '(setq my:skeleton-namespace (read-string "Namespace: " ""))
-                 '(setq my:skeleton-description (read-string "Short Description: " ""))
-                 '(setq my:skeleton-inherit (read-string "Inherits from (space separate for multiple inheritance): " ""))
-                 '(setq my:skeleton-inherit-list (split-string my:skeleton-inherit " " t))
-                 '(setq my:skeleton-inheritance (cond ((null my:skeleton-inherit-list)
-                                                       "")
-                                                      (t
-                                                        (setq my:skeleton-inheritance-concat "")
-                                                        (dolist (element my:skeleton-inherit-list)
-                                                          (setq my:skeleton-inheritance-concat
-                                                                (concat my:skeleton-inheritance-concat
-                                                                        "public " element ", ")))
-                                                        (setq my:skeleton-inheritance-concat
-                                                              (concat " : "
-                                                                      my:skeleton-inheritance-concat))
-                                                        (eval (replace-regexp-in-string ", \\'" "" my:skeleton-inheritance-concat)))))
-                 '(setq my:skeleton-include (cond ((null my:skeleton-inherit-list)
-                                                   "")
-                                                  (t
-                                                    (setq my:skeleton-include "\n")
-                                                    (dolist (element my:skeleton-inherit-list)
-                                                      (setq my:skeleton-include
-                                                            (concat my:skeleton-include
-                                                                    "#include \"" element ".h\"\n")))
-                                                    (eval my:skeleton-include))))
-                 '(setq my:skeleton-namespace-list (split-string my:skeleton-namespace "::"))
-                 '(setq my:skeleton-file-name (file-name-nondirectory (buffer-file-name)))
-                 '(setq my:skeleton-class-name (file-name-sans-extension my:skeleton-file-name))
-                 '(setq my:skeleton-namespace-class
-                        (cond ((string= my:skeleton-namespace "")
-                               my:skeleton-class-name)
-                              (t
-                                (concat my:skeleton-namespace "::" my:skeleton-class-name)
-                                )))
-                 '(setq my:skeleton-namespace-decl
-                        (cond ((string= my:skeleton-namespace "")
-                               ""
-                               )
-                              (t
-                                (setq my:skeleton-namespace-decl-pre "")
-                                (setq my:skeleton-namespace-decl-post "")
-                                (setq my:skeleton-namespace-decl-indent "")
-                                (dolist (namespace-element my:skeleton-namespace-list)
-                                  (setq my:skeleton-namespace-decl-pre
-                                        (concat my:skeleton-namespace-decl-pre
-                                                my:skeleton-namespace-decl-indent
-                                                "namespace " namespace-element " {\n"))
-                                  (setq my:skeleton-namespace-decl-post
-                                        (concat "\n"
-                                                my:skeleton-namespace-decl-indent
-                                                "}"
-                                                my:skeleton-namespace-decl-post))
-                                  (setq my:skeleton-namespace-decl-indent
-                                        (concat my:skeleton-namespace-decl-indent "   "))
-                                  )
-                                (eval (concat my:skeleton-namespace-decl-pre
-                                              my:skeleton-namespace-decl-indent
-                                              "class " my:skeleton-class-name ";"
-                                              my:skeleton-namespace-decl-post))
-                                )))
-                 '(random t)
-                 "/*********************************************************************************" n
-                 "* Copyright (C) 2018, EAIBOT team" > n
-                 "* @date   Created       : " (format-time-string "%Y-%m-%d %H:%M:%S") > n
-                 "*         Last Modified :" > n
-                 "* @author " my:skeleton-author " <" my:skeleton-mail-address ">" > n
-                 "*********************************************************************************/" n
-                 n
-                 "/**" > n
-                 "* @file   " my:skeleton-file-name > n
-                 "* @brief  " my:skeleton-description > n
-                 "*" > n
-                 "*" > n
-                 "*/" > n
-                 n
-                 "#ifndef XXX" > n
-                 "#define XXX"
-                 my:skeleton-include n
-                 my:skeleton-namespace-decl n
-                 n
-                 "class " my:skeleton-namespace-class my:skeleton-inheritance " {" n
-                 " public:" > n
-                 my:skeleton-class-name "();" n
-                 "~" my:skeleton-class-name "();" n
-                 n
-                 " protected:" > n
-                 n
-                 n
-                 " private:" > n
-                 "};" > n
-                 n
-                 "#endif // XXX"
-                 '(delete-trailing-whitespace)
-                 )
-                )
-              auto-insert-alist))
 
 (provide 'init-languages)
 ;;; init-languages.el ends here
