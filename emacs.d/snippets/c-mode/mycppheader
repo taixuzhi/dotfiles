@@ -1,0 +1,11 @@
+# name: cpp header
+# key: mycppheader
+# --
+
+/****************************************************************************
+ *
+ *   Copyright (c) congleetea. All rights reserved.
+ *   @author Xuancong Lee
+ *   @created `(format-time-string "%A, %B %e %H:%M:%S %Z %Y")`
+ *
+ ****************************************************************************/

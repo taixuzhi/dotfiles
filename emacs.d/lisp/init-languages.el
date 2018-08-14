@@ -258,5 +258,29 @@
                  _
                  )) auto-insert-alist))
 
+;;----------------------------------------------------------------------------
+;; YCM 
+;;----------------------------------------------------------------------------
+(use-package ycmd
+  :ensure t
+  :init (add-hook 'c++-mode-hook #'ycmd-mode)
+  :config
+  (set-variable 'ycmd-server-command '("/usr/bin/python" "/home/congleetea/gitlab/dotfiles/ubuntu_pkgs/ycmd/ycmd"))
+  (set-variable 'ycmd-global-config "/home/congleetea/gitlab/dotfiles/ubuntu_pkgs/ycmd/.ycm_extra_conf.py"))
+
+(use-package company-ycmd
+  :ensure t
+  :init (company-ycmd-setup)
+  )
+
+;; Show argument list in echo area
+(use-package eldoc
+  :diminish eldoc-mode
+  :init (add-hook 'ycmd-mode-hook 'ycmd-eldoc-setup))
+
+;;(use-package flycheck-ycmd
+;;  :commands (flycheck-ycmd-setup)
+;;  :init (add-hook 'ycmd-mode-hook 'flycheck-ycmd-setup))
+
 (provide 'init-languages)
 ;;; init-languages.el ends here

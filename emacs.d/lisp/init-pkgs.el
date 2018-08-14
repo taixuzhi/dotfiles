@@ -248,17 +248,46 @@
   :commands (helm-projectile helm-projectile-switch-project)
   :ensure t)
 
+;; Autocomplete
 (use-package company
-  :ensure t
-  :defer t
-  :init (global-company-mode 1)           ; 设置在所有buffers中使用company-mode
+  :defer 10
+  :diminish company-mode
+  :bind (:map company-active-map
+              ("C-n" . company-select-next)
+              ("C-p" . company-select-previous))
+  :preface
+  ;; enable yasnippet everywhere
+  (defvar company-mode/enable-yas t
+    "Enable yasnippet for all backends.")
+  (defun company-mode/backend-with-yas (backend)
+    (if (or 
+         (not company-mode/enable-yas) 
+         (and (listp backend) (member 'company-yasnippet backend)))
+        backend
+      (append (if (consp backend) backend (list backend))
+              '(:with company-yasnippet))))
+
+  :init (global-company-mode t)
   :config
-  (setq company-idle-delay 0.2)
-  (setq company-selection-wrap-around t)
-  (setq company-backends (delete 'company-semantic company-backends))
-  (define-key company-active-map [tab] 'company-complete)
-  (define-key company-active-map (kbd "C-n") 'company-select-next)
-  (define-key company-active-map (kbd "C-p") 'company-select-previous))
+  ;; no delay no autocomplete
+  (setq
+   company-idle-delay 0
+   company-minimum-prefix-length 2
+   company-tooltip-limit 20)
+  (setq company-backends 
+                 (mapcar #'company-mode/backend-with-yas company-backends)))
+
+;; (use-package company
+;;   :ensure t
+;;   :defer t
+;;   :init (global-company-mode 1)           ; 设置在所有buffers中使用company-mode
+;;   :config
+;;   (setq company-idle-delay 0.2)
+;;   (setq company-selection-wrap-around t)
+;;   (setq company-backends (delete 'company-semantic company-backends))
+;;   (define-key company-active-map [tab] 'company-complete)
+;;   (define-key company-active-map (kbd "C-n") 'company-select-next)
+;;   (define-key company-active-map (kbd "C-p") 'company-select-previous))
 
 ;; reffer to http://jwintz.me/blog/2014/02/16/helm-dash-makes-you-efficient/
 ;;(use-package helm-dash
