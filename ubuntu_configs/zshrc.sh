@@ -115,6 +115,16 @@ export GOROOT=/usr/local/go
 export GOPATH=/home/${USER}/gitlab/go
 export PATH=$PATH:/usr/local/go/bin:/home/${USER}/gitlab/go/bin
 
+if [ -d /opt/google/protobuf ];then
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/google/protobuf/lib/
+    export LIBRARY_PATH=$LIBRARY_PATH:/opt/google/protobuf/lib/
+    export PATH=$PATH:/opt/google/protobuf/bin/
+    export C_INCLUDE_PATH=$C_INCLUDE_PATH:/opt/google/protobuf/include/
+    export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:/opt/google/protobuf/include/
+    export PKG_CONFIG_PATH=/opt/google/protobuf/lib/pkgconfig/
+fi
+
+## for ros
 export ROS_WORKSPACE=~/gitlab/catkin_ws/src 
 [ -f /opt/ros/kinetic/setup.zsh ] && source /opt/ros/kinetic/setup.zsh
 [ -f ~/gitlab/catkin_ws/devel/setup.zsh ] && source ~/gitlab/catkin_ws/devel/setup.zsh

@@ -85,6 +85,21 @@
   (add-to-list 'company-c-headers-path-system "/usr/include/c++/5.4.0/"))
 
 ;;---------------------------------------------------------------
+;; Protobuf 
+;;---------------------------------------------------------------
+(use-package protobuf-mode
+             :ensure t
+             :defer t
+             :mode "\\.proto\\'"
+             :init
+             (add-hook 'protobuf-mode-hook
+                       (defconst my-protobuf-style
+                         '((c-basic-offset . 2)
+                           (indent-tabs-mode . nil)))
+                       (lambda () (c-add-style "my-style" my-protobuf-style t)))
+)
+
+;;---------------------------------------------------------------
 ;; Erlang
 ;;---------------------------------------------------------------
 (let* ((emacs-version "2.11.1")

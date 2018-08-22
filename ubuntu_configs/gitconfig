@@ -6,4 +6,4 @@
 [core]
 	editor = vim  
 [merge]
-	tool = meld 
+	tool = vimdiff 

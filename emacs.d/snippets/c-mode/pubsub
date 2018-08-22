@@ -1,0 +1,10 @@
+# name: pubsub 
+# key: pubsub 
+# --
+
+ego::comms::TopicDirectory::Ptr pubsub_;                                                                                   
+
+pubsub_ = ego::comms::TopicDirectory::create();
+
+
+
