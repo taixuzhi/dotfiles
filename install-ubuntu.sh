@@ -89,8 +89,8 @@ function install(){
         elif [ $sw == "sougou" ];then
             interactive_install
             sudo apt-get install -y fcitx libssh2-1
-            cd ${SWDIR} && wget "http://pinyin.sogou.com/linux/download.php?f=linux&bit=64" -O "sougou_64.deb"
-            sudo dpkg -i sougou_64.deb
+            # cd ${SWDIR} && wget "http://pinyin.sogou.com/linux/download.php?f=linux&bit=64" -O "sougou_64.deb"
+            cd ${SWDIR} && sudo dpkg -i sougou_64.deb
         elif [ $sw == "zsh" ];then
             if [ ! -d "/home/$USER/.oh-my-zsh" ];then
                 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
@@ -114,8 +114,8 @@ function install(){
             cd ${SWDIR} && tar xvf emacs-${EMACS_VER}.tar.gz && cd emacs-${EMACS_VER} && ./configure && make && sudo make install
             sudo apt-get install -y exuberant-ctags
             install_deps build-essential texinfo libx11-dev libxpm-dev libgif-dev 
-	    install_deps libxaw7-dev libjpeg-dev libpng12-dev libtiff5-dev libncurses5-dev xsel
-            cd ${SWDIR} && wget ftp://ftp.gnu.org/pub/gnu/global/global-6.5.7.tar.gz 
+	    install_deps openjdk-8-jdk libxaw7-dev libjpeg-dev libpng12-dev libtiff5-dev libncurses5-dev xsel
+            # cd ${SWDIR} && wget ftp://ftp.gnu.org/pub/gnu/global/global-6.5.7.tar.gz 
             cd ${SWDIR} && tar xvf global-6.5.7.tar.gz && cd global-6.5.7 && ./configure && make && sudo make install
             # echo "export GTAGSCONF=/usr/local/share/gtags/gtags.conf" >> ~/.zshrc
             # echo "export GTAGSLABEL=ctags gtags" >> ~/.zshrc

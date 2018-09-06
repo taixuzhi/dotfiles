@@ -181,4 +181,4 @@ function pdf() {
     zathura $1 & 
 }
 
-alias rmm="trash"
+alias rm="trash"
