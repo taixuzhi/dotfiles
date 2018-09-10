@@ -114,7 +114,7 @@ function install(){
             cd ${SWDIR} && tar xvf emacs-${EMACS_VER}.tar.gz && cd emacs-${EMACS_VER} && ./configure && make && sudo make install
             sudo apt-get install -y exuberant-ctags
             install_deps build-essential texinfo libx11-dev libxpm-dev libgif-dev 
-	    install_deps openjdk-8-jdk libxaw7-dev libjpeg-dev libpng12-dev libtiff5-dev libncurses5-dev xsel
+	    install_deps openjdk-8-jdk libxaw7-dev libjpeg-dev libpng12-dev libtiff5-dev libncurses5-dev xsel libclang-3.8-dev
             # cd ${SWDIR} && wget ftp://ftp.gnu.org/pub/gnu/global/global-6.5.7.tar.gz 
             cd ${SWDIR} && tar xvf global-6.5.7.tar.gz && cd global-6.5.7 && ./configure && make && sudo make install
             # echo "export GTAGSCONF=/usr/local/share/gtags/gtags.conf" >> ~/.zshrc
