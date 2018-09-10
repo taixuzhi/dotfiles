@@ -97,10 +97,17 @@
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; ---------------------------- begin youdao ------------------------------ 
-(setq url-automatic-caching t)
+(use-package youdao-dictionary
+  :ensure t
+  :defer t
+  :config (progn
+            (setq helm-autoresize-mode 1)
+            ))
+
 (global-set-key (kbd "C-c y") 'youdao-dictionary-search-at-point)
 (global-set-key (kbd "C-c o") 'youdao-dictionary-play-voice-at-point)
 ;; ---------------------------- end youdao -------------------------------- 
+
 (global-set-key (kbd "C-c C-j") 'dired-jump)
 
 (use-package telephone-line      :ensure t :config (telephone-line-mode 1))
