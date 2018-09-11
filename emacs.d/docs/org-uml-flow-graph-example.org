@@ -1,0 +1,16 @@
+#+BEGIN_SRC plantuml :file ./xx.png  :cmdline -charset UTF-8
+start
+if("cond1") then(yes)
+  :do1;
+  if("cond2") then(yes)
+    :do2;
+  else
+    if("cond3") then(no)
+      :do3;
+    else
+      :do4;
+    endif
+  endif
+endif
+stop
+#+END_SRC                                                                                                                                                                             
