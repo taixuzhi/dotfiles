@@ -39,7 +39,8 @@ base_sws=(tree
           inkscape)
 
 option_sws=(emacs
-	    xmind
+            ycmd
+            xmind
             erlang
             golang
             ansible)
@@ -119,6 +120,14 @@ function install(){
             cd ${SWDIR} && tar xvf global-6.5.7.tar.gz && cd global-6.5.7 && ./configure && make && sudo make install
             # echo "export GTAGSCONF=/usr/local/share/gtags/gtags.conf" >> ~/.zshrc
             # echo "export GTAGSLABEL=ctags gtags" >> ~/.zshrc
+        elif [ $sw == "ycmd" ];then
+            if [ ! -d "${SWDIR}/ycmd" ];then
+                git clone https://github.com/Valloric/ycmd.git
+            fi
+            install_deps libclang-3.8-dev clang-3.5
+            sudo ln -s /usr/bin/clang-3.8 /usr/bin/clang 
+            cd ${SWDIR}/ycmd && git submodule update --init --recursive
+            cd ${SWDIE} && ./build.py --clang-completer --system-libclang
         elif [ $sw == "erlang" ]; then
             cd ${SWDIR}
             # wget http://erlang.org/download/otp_src_$ERLANG_VER.tar.gz
