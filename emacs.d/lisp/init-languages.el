@@ -82,7 +82,7 @@
 (use-package company-c-headers
   :init
   (add-to-list 'company-backends 'company-c-headers)
-  (add-to-list 'company-c-headers-path-system "/usr/include/c++/5.4.0/"))
+  (add-to-list 'company-c-headers-path-system "/usr/include/c++/7/"))
 
 ;;---------------------------------------------------------------
 ;; Protobuf 

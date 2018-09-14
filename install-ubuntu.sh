@@ -126,6 +126,7 @@ function install(){
             fi
             install_deps libclang-3.8-dev clang-3.5
             sudo ln -s /usr/bin/clang-3.8 /usr/bin/clang 
+            sudo ln -s /usr/bin/clang++-3.8 /usr/bin/clang++
             cd ${SWDIR}/ycmd && git submodule update --init --recursive
             cd ${SWDIE} && ./build.py --clang-completer --system-libclang
         elif [ $sw == "erlang" ]; then
