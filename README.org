@@ -27,12 +27,12 @@ include:
 
 link terminator config, .emacs.d, .zshrc, gitconfig, vimrc(TODO).
 
-- ./ubuntu_configs/terminator.conf ${HOME}/.config/terminator/config  
+- ./ubuntu_configs/terminator.conf ${HOME}/.config/terminator/config
 - ./ubuntu_configs/gitconfig ${HOME}/.gitconfig
 - ./ubuntu_configs/zshrc.sh ${HOME}/.zshrc
 - ./emacs.d  ${HOME}/.emacs.d
 - ./ubuntu_configs/vimrc ${HOME}/.vimrc
-  
+
 #+BEGIN_SRC shell
 ./link_configs.sh
 #+END_SRC
@@ -40,7 +40,7 @@ link terminator config, .emacs.d, .zshrc, gitconfig, vimrc(TODO).
 
 ** emacs
 
-编写emacs相关内容的时候，常用的快捷键：
+*** 编写emacs相关内容的时候，常用的快捷键：
 
    | 快捷键   | 说明                 |
    |----------+----------------------|
@@ -68,13 +68,28 @@ link terminator config, .emacs.d, .zshrc, gitconfig, vimrc(TODO).
    | ag, helm-ag                 | 查找工具                                         |                                         |
    | projectile, helm-projectile | 项目相关                                         |                                         |
    | company                     | 补全工具                                         | http://company-mode.github.io/          |
-   | dired                 	 | 文件目录操作                                     |                                         |
+   | dired                       | 文件目录操作                                     |                                         |
    | dired-k                     | 像 [[https://github.com/supercrabtree/k][zsh的k一样显示目录]]                            | https://github.com/syohex/emacs-dired-k |
    | evil                        |                                                  | 使用2017版                              |
 
   helm: 模糊查找文件。
 
-  org有时候输出有问题时可能需要删除elc文件重试。
+
+*** ycmd 自动补全
+
+    安装方法参考install-ubuntu.sh ycmd。
+
+    要补全你的c++项目，可以通过YCM-Generator生成.ycm_extra_conf.py 文件。这样emacs打开项目的时后会加载这个文件，通过该文件找到
+    补全。
+
+    生成的方法是:
+
+    #+BEGIN_SRC shell
+    cd YCM-Generator && ./config_gen.py -x c++ ~/YOUR_PROJECT_PATH
+    #+END_SRC
+
+    目前生成的文件找不到系统的c++函数，因此可以在.ycm_extra_conf.py的flags中添加'-I/usr/include/c++/7' (根据你使用的c++版本确定,其他没有包含的路径也可以通过同样的方法加入).
+
 
 *** GUI不能输入中文
 
@@ -102,3 +117,8 @@ link terminator config, .emacs.d, .zshrc, gitconfig, vimrc(TODO).
       #+BEGIN_SRC text
         Exec=env LC_CType=zh_CN.UTF-8 emacs %F
       #+END_SRC
+
+
+*** org 遇到的问题
+
+    - org有时候输出有问题时可能需要删除elc文件重试。
