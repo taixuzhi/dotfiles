@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: orglatex
+# key: orglatex
+# --
+#+BEGIN_LATEX
+$1
+#+END_LATEX

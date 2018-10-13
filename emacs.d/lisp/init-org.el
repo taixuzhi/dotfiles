@@ -30,6 +30,7 @@
    (python . t)	
    (awk . t)	
    (ditaa . t)	
+   (latex . t)
    ))	
 	
 ;; Highlight and indent source code blocks	
