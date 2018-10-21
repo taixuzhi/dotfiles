@@ -182,3 +182,4 @@ function pdf() {
 }
 
 alias rm="trash"
+alias unzip="unzip -O CP936 "
