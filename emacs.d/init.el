@@ -7,8 +7,8 @@
 
 ;;; set custom variables
 (setq default-directory "~/gitlab")
-(setq user-full-name "Xuancong Lee")
-(setq user-mail-address "congleetea@gmail.com")
+(setq user-full-name "taixuzhi")
+(setq user-mail-address "974724295@qq.com")
 
 ;;; set system directory and load them.
 (defvar vendor-dir (expand-file-name "vendor" user-emacs-directory))
